@@ -34,3 +34,4 @@ Scientific model code must be testable without a renderer. Renderer code receive
 - `SimulationSnapshot<TState>` includes `simulationTimeS` to keep simulation time explicit and separate from rendering frame rate.
 - `assertPositiveDeltaTime` exists as a small shared guard for deterministic stepping. More timing behavior belongs in the timing foundation task, not in the contract itself.
 - `SimulationHost<TState, TParameters>` owns lifecycle state, initialization errors, abort cleanup, and safe delegation to the simulation contract.
+- `SimulationClock` in `src/core/timing/clock.ts` separates real elapsed time from simulation time, supports play/pause/reset/manual step, and applies speed multipliers only when advancing during playback.
