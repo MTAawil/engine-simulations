@@ -28,43 +28,43 @@ Update rule:
 
 ## Epic Summary
 
-| Epic    | Name                                    | Status   | Review   | Notes                                                                                                  |
-| ------- | --------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------ |
-| EPIC-00 | Repository Foundation                   | REVIEWED | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`. |
-| EPIC-01 | Simulation Studio Core V1               | TODO     | PENDING  | Next milestone. Build only capabilities required by Prototype A.                                       |
-| EPIC-02 | Electromagnetic Induction Specification | TODO     | PENDING  | Must be completed before prototype implementation.                                                     |
-| EPIC-03 | Electromagnetic Induction Prototype     | TODO     | PENDING  | First major simulation. Requires scientific, visual/UX, and release QA reviews.                        |
-| EPIC-04 | Prototype A Release Candidate           | TODO     | PENDING  | Prepare owner testing guide, screenshots if supported, build, and known issues.                        |
-| EPIC-05 | Meiosis Prototype                       | TODO     | PENDING  | Parked until Prototype A is approved unless owner redirects.                                           |
+| Epic    | Name                                    | Status      | Review   | Notes                                                                                                  |
+| ------- | --------------------------------------- | ----------- | -------- | ------------------------------------------------------------------------------------------------------ |
+| EPIC-00 | Repository Foundation                   | REVIEWED    | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`. |
+| EPIC-01 | Simulation Studio Core V1               | IN_PROGRESS | PENDING  | Next milestone. Build only capabilities required by Prototype A.                                       |
+| EPIC-02 | Electromagnetic Induction Specification | TODO        | PENDING  | Must be completed before prototype implementation.                                                     |
+| EPIC-03 | Electromagnetic Induction Prototype     | TODO        | PENDING  | First major simulation. Requires scientific, visual/UX, and release QA reviews.                        |
+| EPIC-04 | Prototype A Release Candidate           | TODO        | PENDING  | Prepare owner testing guide, screenshots if supported, build, and known issues.                        |
+| EPIC-05 | Meiosis Prototype                       | TODO        | PENDING  | Parked until Prototype A is approved unless owner redirects.                                           |
 
 ## EPIC-00: Repository Foundation
 
-| Task   | Title                                        | Status      | Review       | Notes                                                                                                            |
-| ------ | -------------------------------------------- | ----------- | ------------ | ---------------------------------------------------------------------------------------------------------------- |
-| SS-000 | Connect repo to GitHub                       | REVIEWED    | NOT_REQUIRED | Remote `origin` tracks GitHub `main`.                                                                            |
-| SS-001 | Create React/TypeScript/Vite foundation      | DONE        | REVIEWED     | Fast QA and production build passed. Covered by Phase 0 architecture review.                                     |
-| SS-002 | Add repository source-of-truth docs          | DONE        | REVIEWED     | `AGENTS.md`, `docs/`, and `docs/CURRENT_STATUS.md` created.                                                      |
-| SS-003 | Add dependency and license policy            | DONE        | REVIEWED     | `docs/DEPENDENCY_POLICY.md`, `docs/OPEN_SOURCE_POLICY.md`, `docs/THIRD_PARTY_NOTICES.md`.                        |
-| SS-004 | Add reviewer playbooks and local skill stubs | DONE        | REVIEWED     | Playbooks in `docs/reviews/playbooks/`; stubs in `.codex/skills/`.                                               |
-| SS-005 | Establish QA commands                        | DONE        | REVIEWED     | `pnpm qa:fast` and `pnpm build` pass. `qa:full` has transparent placeholders for future Playwright/visual tests. |
-| SS-006 | Install and document RTK                     | DONE        | NOT_REQUIRED | `rtk 0.42.0` installed locally and documented in `docs/RTK.md`.                                                  |
-| SS-007 | Add Jira-style tracker                       | IN_PROGRESS | NOT_REQUIRED | This task creates the tracker itself.                                                                            |
+| Task   | Title                                        | Status   | Review       | Notes                                                                                                            |
+| ------ | -------------------------------------------- | -------- | ------------ | ---------------------------------------------------------------------------------------------------------------- |
+| SS-000 | Connect repo to GitHub                       | REVIEWED | NOT_REQUIRED | Remote `origin` tracks GitHub `main`.                                                                            |
+| SS-001 | Create React/TypeScript/Vite foundation      | DONE     | REVIEWED     | Fast QA and production build passed. Covered by Phase 0 architecture review.                                     |
+| SS-002 | Add repository source-of-truth docs          | DONE     | REVIEWED     | `AGENTS.md`, `docs/`, and `docs/CURRENT_STATUS.md` created.                                                      |
+| SS-003 | Add dependency and license policy            | DONE     | REVIEWED     | `docs/DEPENDENCY_POLICY.md`, `docs/OPEN_SOURCE_POLICY.md`, `docs/THIRD_PARTY_NOTICES.md`.                        |
+| SS-004 | Add reviewer playbooks and local skill stubs | DONE     | REVIEWED     | Playbooks in `docs/reviews/playbooks/`; stubs in `.codex/skills/`.                                               |
+| SS-005 | Establish QA commands                        | DONE     | REVIEWED     | `pnpm qa:fast` and `pnpm build` pass. `qa:full` has transparent placeholders for future Playwright/visual tests. |
+| SS-006 | Install and document RTK                     | DONE     | NOT_REQUIRED | `rtk 0.42.0` installed locally and documented in `docs/RTK.md`.                                                  |
+| SS-007 | Add Jira-style tracker                       | DONE     | NOT_REQUIRED | Tracker created and linked from `AGENTS.md`.                                                                     |
 
 ## EPIC-01: Simulation Studio Core V1
 
-| Task   | Title                                                | Status | Review  | Notes                                                            |
-| ------ | ---------------------------------------------------- | ------ | ------- | ---------------------------------------------------------------- |
-| SS-101 | Define core simulation TypeScript contract           | TODO   | PENDING | Keep small and capability-based.                                 |
-| SS-102 | Implement lifecycle host                             | TODO   | PENDING | Initialize, mount, destroy, error handling.                      |
-| SS-103 | Implement deterministic timing foundation            | TODO   | PENDING | Play, pause, reset, step, speed control foundation.              |
-| SS-104 | Implement parameter definitions and validation       | TODO   | PENDING | Explicit units and bounds.                                       |
-| SS-105 | Implement common playback controls                   | TODO   | PENDING | React UI only; no 60 FPS simulation state in React.              |
-| SS-106 | Implement telemetry and equation display foundations | TODO   | PENDING | Coarse telemetry and future KaTeX integration point.             |
-| SS-107 | Implement presentation mode foundation               | TODO   | PENDING | 16:9-friendly, reduced UI, stable teaching layout.               |
-| SS-108 | Implement renderer lifecycle boundary                | TODO   | PENDING | Cleanup contract for Three.js/PixiJS renderers.                  |
-| SS-109 | Add minimal Three.js adapter only when needed        | TODO   | PENDING | Verify license before adding dependency.                         |
-| SS-110 | Add graph capability required by Prototype A         | TODO   | PENDING | Choose D3/Plotly/custom only after specification clarifies need. |
-| SS-111 | Run Implementation Reviewer for Core V1              | TODO   | PENDING | Sequential review after core milestone is complete.              |
+| Task   | Title                                                | Status | Review  | Notes                                                             |
+| ------ | ---------------------------------------------------- | ------ | ------- | ----------------------------------------------------------------- |
+| SS-101 | Define core simulation TypeScript contract           | DONE   | PENDING | `src/core/simulation/types.ts` added with focused contract tests. |
+| SS-102 | Implement lifecycle host                             | TODO   | PENDING | Initialize, mount, destroy, error handling.                       |
+| SS-103 | Implement deterministic timing foundation            | TODO   | PENDING | Play, pause, reset, step, speed control foundation.               |
+| SS-104 | Implement parameter definitions and validation       | TODO   | PENDING | Explicit units and bounds.                                        |
+| SS-105 | Implement common playback controls                   | TODO   | PENDING | React UI only; no 60 FPS simulation state in React.               |
+| SS-106 | Implement telemetry and equation display foundations | TODO   | PENDING | Coarse telemetry and future KaTeX integration point.              |
+| SS-107 | Implement presentation mode foundation               | TODO   | PENDING | 16:9-friendly, reduced UI, stable teaching layout.                |
+| SS-108 | Implement renderer lifecycle boundary                | TODO   | PENDING | Cleanup contract for Three.js/PixiJS renderers.                   |
+| SS-109 | Add minimal Three.js adapter only when needed        | TODO   | PENDING | Verify license before adding dependency.                          |
+| SS-110 | Add graph capability required by Prototype A         | TODO   | PENDING | Choose D3/Plotly/custom only after specification clarifies need.  |
+| SS-111 | Run Implementation Reviewer for Core V1              | TODO   | PENDING | Sequential review after core milestone is complete.               |
 
 ## EPIC-02: Electromagnetic Induction Specification
 
