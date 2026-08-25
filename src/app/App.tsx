@@ -1,8 +1,10 @@
-const foundationChecks = [
-  "Strict TypeScript application shell",
-  "Repository-owned architecture and QA documentation",
-  "Dependency policy before simulation-specific libraries",
-  "Phase-gated path toward Electromagnetic Induction",
+import { ElectromagneticInductionSceneView } from "../simulations/electromagnetic-induction";
+
+const prototypeChecks = [
+  "Reviewed rotating-coil specification",
+  "Pure deterministic induction model",
+  "Three.js scene consumes model snapshots",
+  "Next: controls, telemetry, and graph wiring",
 ] as const;
 
 export function App() {
@@ -10,20 +12,21 @@ export function App() {
     <main className="app-shell">
       <section className="intro" aria-labelledby="page-title">
         <p className="eyebrow">Simulation Studio</p>
-        <h1 id="page-title">Premium educational simulation engine</h1>
+        <h1 id="page-title">Electromagnetic induction prototype</h1>
         <p className="lede">
-          Phase 0 is establishing the clean foundation: documentation, strict tooling,
-          QA gates, and the first application surface.
+          A deterministic rotating-coil model is now feeding the first 3D scene
+          boundary. The prototype is being built from science outward.
         </p>
       </section>
 
       <section className="status-panel" aria-labelledby="status-title">
+        <ElectromagneticInductionSceneView />
         <div>
           <p className="eyebrow">Current phase</p>
-          <h2 id="status-title">Repository Foundation</h2>
+          <h2 id="status-title">Prototype visual scene</h2>
         </div>
         <ul>
-          {foundationChecks.map((item) => (
+          {prototypeChecks.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>

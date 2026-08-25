@@ -85,7 +85,7 @@ Update rule:
 | ------ | --------------------------------------------- | ------ | ------- | -------------------------------------------------------------------------------------------------- |
 | SS-301 | Implement scientific model                    | DONE   | PENDING | Pure deterministic TypeScript model added in `src/simulations/electromagnetic-induction/model.ts`. |
 | SS-302 | Add scientific golden tests                   | DONE   | PENDING | Golden tests cover flux/linkage, EMF, current, direction threshold, edge cases, and validation.    |
-| SS-303 | Implement Three.js visual scene               | TODO   | PENDING | Renderer consumes model/controller state.                                                          |
+| SS-303 | Implement Three.js visual scene               | DONE   | PENDING | Scene consumes model snapshots; fast QA, build, and desktop nonblank screenshot checks pass.       |
 | SS-304 | Implement controls, presets, and telemetry UI | TODO   | PENDING | Accessible, teacher-friendly.                                                                      |
 | SS-305 | Implement graph/telemetry behavior            | TODO   | PENDING | Must correspond to model state.                                                                    |
 | SS-306 | Implement presentation mode behavior          | TODO   | PENDING | Stable 16:9 teaching composition.                                                                  |

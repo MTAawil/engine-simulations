@@ -3,14 +3,14 @@ import { describe, expect, it } from "vitest";
 import { App } from "./App";
 
 describe("App", () => {
-  it("renders the Phase 0 foundation status", () => {
+  it("renders the electromagnetic induction prototype status", () => {
     render(<App />);
 
     expect(
       screen.getByRole("heading", {
-        name: /premium educational simulation engine/i,
+        name: /electromagnetic induction prototype/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Repository Foundation/i)).toBeInTheDocument();
+    expect(screen.getByText(/Prototype visual scene/i)).toBeInTheDocument();
   });
 });
