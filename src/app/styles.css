@@ -87,6 +87,71 @@ body {
   padding-right: 4px;
 }
 
+.prototype-workspace--presenting {
+  display: block;
+}
+
+.prototype-workspace--presenting .presentation-shell {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.prototype-workspace--presenting .presentation-shell__workspace {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 20px;
+}
+
+.prototype-workspace--presenting .presentation-shell__stage {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.prototype-workspace--presenting .induction-scene {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  border: 0;
+}
+
+.prototype-workspace--presenting .induction-scene__canvas {
+  min-height: 0;
+}
+
+.presentation-control-strip {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.presentation-toggle-button,
+.presentation-exit-button {
+  min-height: 40px;
+  border: 1px solid rgba(87, 199, 182, 0.5);
+  border-radius: 6px;
+  color: #091315;
+  background: #85d9cf;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.presentation-toggle-button {
+  width: 100%;
+}
+
+.presentation-exit-button {
+  justify-self: start;
+  padding: 0 16px;
+}
+
+.prototype-workspace--presenting .graph-panel {
+  background: rgba(19, 25, 29, 0.72);
+}
+
+.prototype-workspace--presenting .time-series-graph svg {
+  height: 150px;
+}
+
 .intro,
 .status-panel {
   min-width: 0;

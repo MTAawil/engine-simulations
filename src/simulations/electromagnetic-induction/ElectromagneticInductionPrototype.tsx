@@ -3,6 +3,7 @@ import type { NumberParameterDefinition } from "../../core/parameters";
 import type { SimulationLifecycleState, SimulationPreset } from "../../core/simulation";
 import { PlaybackControls } from "../../ui/controls";
 import { TimeSeriesGraph, type GraphSeries } from "../../ui/graphs";
+import { PresentationShell } from "../../ui/presentation";
 import { TelemetryPanel, type TelemetryDatum } from "../../ui/telemetry";
 import { ElectromagneticInductionSceneView } from "./ElectromagneticInductionSceneView";
 import {
@@ -177,6 +178,7 @@ export function ElectromagneticInductionPrototype() {
   const [speedMultiplier, setSpeedMultiplier] = useState(1);
   const [selectedPresetId, setSelectedPresetId] = useState("default");
   const [selectedGraphMetric, setSelectedGraphMetric] = useState<GraphMetric>("emfV");
+  const [isPresentationMode, setIsPresentationMode] = useState(false);
 
   useEffect(() => {
     if (lifecycleState !== "playing") {
@@ -233,6 +235,67 @@ export function ElectromagneticInductionPrototype() {
     });
   }
 
+  const playbackControls = (
+    <PlaybackControls
+      lifecycleState={lifecycleState}
+      speedMultiplier={speedMultiplier}
+      onPlay={() => {
+        setLifecycleState("playing");
+      }}
+      onPause={() => {
+        setLifecycleState("paused");
+      }}
+      onReset={() => {
+        setLifecycleState("ready");
+        setTimeS(0.18);
+      }}
+      onStep={() => {
+        setLifecycleState("paused");
+        setTimeS((currentTimeS) => currentTimeS + stepDeltaTimeS);
+      }}
+      onSpeedChange={setSpeedMultiplier}
+    />
+  );
+
+  const graphPanel = (
+    <GraphPanel
+      selectedGraphMetric={selectedGraphMetric}
+      selectedGraphOption={selectedGraphOption}
+      graphSeries={graphSeries}
+      onGraphMetricChange={setSelectedGraphMetric}
+    />
+  );
+
+  if (isPresentationMode) {
+    return (
+      <div className="prototype-workspace prototype-workspace--presenting">
+        <PresentationShell
+          title="Electromagnetic induction prototype"
+          subtitle="Rotating coil, magnetic flux, induced EMF, and Lenz direction"
+          isPresentationMode
+          stage={<ElectromagneticInductionSceneView state={state} />}
+          controls={
+            <div className="presentation-control-strip">
+              <button
+                className="presentation-exit-button"
+                type="button"
+                onClick={() => {
+                  setIsPresentationMode(false);
+                }}
+              >
+                Exit presentation
+              </button>
+              {playbackControls}
+              {graphPanel}
+            </div>
+          }
+          supportingPanel={<TelemetryPanel title="Live readings" data={telemetry} />}
+          showSupportingPanelInPresentation
+        />
+      </div>
+    );
+  }
+
   return (
     <section className="prototype-workspace" aria-labelledby="prototype-title">
       <div className="prototype-stage">
@@ -246,34 +309,7 @@ export function ElectromagneticInductionPrototype() {
         </div>
 
         <ElectromagneticInductionSceneView state={state} />
-
-        <section className="graph-panel" aria-labelledby="graph-title">
-          <div className="graph-panel__header">
-            <h2 id="graph-title">Model graph</h2>
-            <label>
-              <span>Graph</span>
-              <select
-                value={selectedGraphMetric}
-                onChange={(event) => {
-                  setSelectedGraphMetric(event.target.value as GraphMetric);
-                }}
-              >
-                {graphMetricOptions.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-          <TimeSeriesGraph
-            title={`${selectedGraphOption?.label ?? "Model"} over time`}
-            xLabel="Time (s)"
-            yLabel={selectedGraphOption?.yLabel ?? "Value"}
-            series={graphSeries}
-            height={220}
-          />
-        </section>
+        {graphPanel}
       </div>
 
       <aside
@@ -286,25 +322,17 @@ export function ElectromagneticInductionPrototype() {
             <h2>Controls and telemetry</h2>
           </div>
 
-          <PlaybackControls
-            lifecycleState={lifecycleState}
-            speedMultiplier={speedMultiplier}
-            onPlay={() => {
-              setLifecycleState("playing");
+          <button
+            className="presentation-toggle-button"
+            type="button"
+            onClick={() => {
+              setIsPresentationMode(true);
             }}
-            onPause={() => {
-              setLifecycleState("paused");
-            }}
-            onReset={() => {
-              setLifecycleState("ready");
-              setTimeS(0.18);
-            }}
-            onStep={() => {
-              setLifecycleState("paused");
-              setTimeS((currentTimeS) => currentTimeS + stepDeltaTimeS);
-            }}
-            onSpeedChange={setSpeedMultiplier}
-          />
+          >
+            Present
+          </button>
+
+          {playbackControls}
 
           <label className="preset-select">
             <span>Preset</span>
@@ -339,6 +367,50 @@ export function ElectromagneticInductionPrototype() {
 
         <TelemetryPanel title="Live readings" data={telemetry} />
       </aside>
+    </section>
+  );
+}
+
+type GraphPanelProps = {
+  selectedGraphMetric: GraphMetric;
+  selectedGraphOption: (typeof graphMetricOptions)[number] | undefined;
+  graphSeries: readonly GraphSeries[];
+  onGraphMetricChange: (metric: GraphMetric) => void;
+};
+
+function GraphPanel({
+  selectedGraphMetric,
+  selectedGraphOption,
+  graphSeries,
+  onGraphMetricChange,
+}: GraphPanelProps) {
+  return (
+    <section className="graph-panel" aria-labelledby="graph-title">
+      <div className="graph-panel__header">
+        <h2 id="graph-title">Model graph</h2>
+        <label>
+          <span>Graph</span>
+          <select
+            value={selectedGraphMetric}
+            onChange={(event) => {
+              onGraphMetricChange(event.target.value as GraphMetric);
+            }}
+          >
+            {graphMetricOptions.map((option) => (
+              <option key={option.id} value={option.id}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <TimeSeriesGraph
+        title={`${selectedGraphOption?.label ?? "Model"} over time`}
+        xLabel="Time (s)"
+        yLabel={selectedGraphOption?.yLabel ?? "Value"}
+        series={graphSeries}
+        height={220}
+      />
     </section>
   );
 }

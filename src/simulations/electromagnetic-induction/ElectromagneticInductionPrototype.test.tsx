@@ -15,6 +15,7 @@ describe("ElectromagneticInductionPrototype", () => {
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Preset")).toBeInTheDocument();
     expect(screen.getByLabelText("Magnetic field slider")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Present" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Live readings" })).toBeInTheDocument();
     expect(screen.getByRole("img", { name: "EMF over time" })).toBeInTheDocument();
     expect(screen.getAllByText("Single-turn flux").length).toBeGreaterThan(0);
@@ -57,6 +58,29 @@ describe("ElectromagneticInductionPrototype", () => {
 
     expect(screen.getByRole("img", { name: "Current over time" })).toBeInTheDocument();
     expect(screen.getByText("Current (A)")).toBeInTheDocument();
+  });
+
+  it("toggles a focused presentation layout", async () => {
+    const user = userEvent.setup();
+    render(<ElectromagneticInductionPrototype />);
+
+    await user.click(screen.getByRole("button", { name: "Present" }));
+
+    expect(
+      screen.getByRole("region", {
+        name: "Electromagnetic induction prototype stage",
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Exit presentation" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "EMF over time" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Live readings" })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Exit presentation" }));
+
+    expect(screen.getByRole("button", { name: "Present" })).toBeInTheDocument();
+    expect(screen.getByLabelText("Magnetic field slider")).toBeInTheDocument();
   });
 
   it("advances with coarse playback ticks", () => {
