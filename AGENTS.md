@@ -19,7 +19,7 @@ Core rules:
 - Add dependencies only when needed, verify licenses first, and update `docs/THIRD_PARTY_NOTICES.md`.
 - Treat third-party libraries as read-only dependencies. Use adapters/wrappers before considering forks.
 - Before a major simulation, create a specification using `docs/ADDING_A_SIMULATION.md`.
-- Run reviewer playbooks sequentially at meaningful milestones. Use `.codex/skills/` when available, otherwise follow `docs/reviews/playbooks/`.
+- Run reviewer agents sequentially at meaningful milestones. Agent definitions live in `.agents/`, required reviewer skills live in `.codex/skills/`, and fallback playbooks live in `docs/reviews/playbooks/`.
 - Update `docs/PROJECT_TRACKER.md` whenever task status or review status changes.
 - Update `docs/CURRENT_STATUS.md` after major milestones.
 

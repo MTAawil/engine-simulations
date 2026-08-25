@@ -2,9 +2,9 @@
 
 Store meaningful milestone reviews here. Do not permanently store trivial review noise.
 
-Reviewer playbooks live in `docs/reviews/playbooks/` and may also be mirrored as project-local Codex skills under `.codex/skills/`.
+Reviewer agent definitions live in `.agents/`. Reviewer playbooks live in `docs/reviews/playbooks/` and may also be mirrored as project-local Codex skills under `.codex/skills/`.
 
-Reviews must be performed through the matching expert reviewer role. The same implementation agent may prepare the code, but review records should explicitly name the reviewer role used and follow that role's playbook.
+Reviews must be performed through the matching expert reviewer role. The same implementation agent may prepare the code, but review records should explicitly name the reviewer agent used, load its required skill, and follow that role's playbook.
 
 Default cadence:
 

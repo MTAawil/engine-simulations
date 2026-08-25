@@ -22,7 +22,7 @@ Do not declare success if visual quality, scientific certainty, performance, lic
 
 Reviews happen at the end of a phase or meaningful milestone by default. Run an earlier focused review when risk is high, such as scientific formulas, licensing, renderer lifecycle, accessibility, or release readiness.
 
-Each review must use the matching expert reviewer role and playbook:
+Each review must use the matching expert reviewer agent, required project-local skill, and playbook:
 
 - Architecture Reviewer for system boundaries, module ownership, and long-term structure.
 - Dependency / License Reviewer for third-party packages, assets, scientific data, fonts, and notices.
