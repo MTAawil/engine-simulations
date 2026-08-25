@@ -29,14 +29,14 @@ Update rule:
 
 ## Epic Summary
 
-| Epic    | Name                                    | Status   | Review   | Notes                                                                                                  |
-| ------- | --------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------ |
-| EPIC-00 | Repository Foundation                   | REVIEWED | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`. |
-| EPIC-01 | Simulation Studio Core V1               | REVIEWED | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                 |
-| EPIC-02 | Electromagnetic Induction Specification | REVIEWED | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.        |
-| EPIC-03 | Electromagnetic Induction Prototype     | TODO     | PENDING  | First major simulation. Requires scientific, visual/UX, and release QA reviews.                        |
-| EPIC-04 | Prototype A Release Candidate           | TODO     | PENDING  | Prepare owner testing guide, screenshots if supported, build, and known issues.                        |
-| EPIC-05 | Meiosis Prototype                       | TODO     | PENDING  | Parked until Prototype A is approved unless owner redirects.                                           |
+| Epic    | Name                                    | Status      | Review   | Notes                                                                                                  |
+| ------- | --------------------------------------- | ----------- | -------- | ------------------------------------------------------------------------------------------------------ |
+| EPIC-00 | Repository Foundation                   | REVIEWED    | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`. |
+| EPIC-01 | Simulation Studio Core V1               | REVIEWED    | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                 |
+| EPIC-02 | Electromagnetic Induction Specification | REVIEWED    | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.        |
+| EPIC-03 | Electromagnetic Induction Prototype     | IN_PROGRESS | PENDING  | First major simulation. Requires scientific, visual/UX, and release QA reviews.                        |
+| EPIC-04 | Prototype A Release Candidate           | TODO        | PENDING  | Prepare owner testing guide, screenshots if supported, build, and known issues.                        |
+| EPIC-05 | Meiosis Prototype                       | TODO        | PENDING  | Parked until Prototype A is approved unless owner redirects.                                           |
 
 ## EPIC-00: Repository Foundation
 
@@ -81,18 +81,18 @@ Update rule:
 
 ## EPIC-03: Electromagnetic Induction Prototype
 
-| Task   | Title                                         | Status | Review  | Notes                                                  |
-| ------ | --------------------------------------------- | ------ | ------- | ------------------------------------------------------ |
-| SS-301 | Implement scientific model                    | TODO   | PENDING | Pure deterministic TypeScript where practical.         |
-| SS-302 | Add scientific golden tests                   | TODO   | PENDING | Known values, units, boundaries, invariants.           |
-| SS-303 | Implement Three.js visual scene               | TODO   | PENDING | Renderer consumes model/controller state.              |
-| SS-304 | Implement controls, presets, and telemetry UI | TODO   | PENDING | Accessible, teacher-friendly.                          |
-| SS-305 | Implement graph/telemetry behavior            | TODO   | PENDING | Must correspond to model state.                        |
-| SS-306 | Implement presentation mode behavior          | TODO   | PENDING | Stable 16:9 teaching composition.                      |
-| SS-307 | Verify resource cleanup                       | TODO   | PENDING | No leaked animation loops/listeners/Three resources.   |
-| SS-308 | Run Scientific Reviewer                       | TODO   | PENDING | Resolve significant findings before visual review.     |
-| SS-309 | Run Visual / UX Reviewer                      | TODO   | PENDING | Resolve significant findings before release QA.        |
-| SS-310 | Run Release QA Reviewer                       | TODO   | PENDING | Resolve blockers/high issues before release candidate. |
+| Task   | Title                                         | Status | Review  | Notes                                                                                              |
+| ------ | --------------------------------------------- | ------ | ------- | -------------------------------------------------------------------------------------------------- |
+| SS-301 | Implement scientific model                    | DONE   | PENDING | Pure deterministic TypeScript model added in `src/simulations/electromagnetic-induction/model.ts`. |
+| SS-302 | Add scientific golden tests                   | DONE   | PENDING | Golden tests cover flux/linkage, EMF, current, direction threshold, edge cases, and validation.    |
+| SS-303 | Implement Three.js visual scene               | TODO   | PENDING | Renderer consumes model/controller state.                                                          |
+| SS-304 | Implement controls, presets, and telemetry UI | TODO   | PENDING | Accessible, teacher-friendly.                                                                      |
+| SS-305 | Implement graph/telemetry behavior            | TODO   | PENDING | Must correspond to model state.                                                                    |
+| SS-306 | Implement presentation mode behavior          | TODO   | PENDING | Stable 16:9 teaching composition.                                                                  |
+| SS-307 | Verify resource cleanup                       | TODO   | PENDING | No leaked animation loops/listeners/Three resources.                                               |
+| SS-308 | Run Scientific Reviewer                       | TODO   | PENDING | Resolve significant findings before visual review.                                                 |
+| SS-309 | Run Visual / UX Reviewer                      | TODO   | PENDING | Resolve significant findings before release QA.                                                    |
+| SS-310 | Run Release QA Reviewer                       | TODO   | PENDING | Resolve blockers/high issues before release candidate.                                             |
 
 ## EPIC-04: Prototype A Release Candidate
 
