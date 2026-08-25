@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   assertPositiveDeltaTime,
   hasSimulationCapability,
+  type Simulation,
   type SimulationMetadata,
 } from "./types";
 
@@ -17,6 +18,27 @@ describe("simulation contract helpers", () => {
   it("checks declared capabilities without requiring every simulation feature", () => {
     expect(hasSimulationCapability(metadata, "playback")).toBe(true);
     expect(hasSimulationCapability(metadata, "telemetry")).toBe(false);
+  });
+
+  it("allows simulations to implement only their declared capabilities", () => {
+    const staticSimulation = {
+      metadata: {
+        id: "static-explanation",
+        title: "Static Explanation",
+        subject: "physics",
+        summary: "A simulation surface with no playback controls.",
+        capabilities: [],
+      },
+      initialize: () => undefined,
+      destroy: () => undefined,
+      getSnapshot: () => ({
+        lifecycleState: "ready",
+        simulationTimeS: 0,
+        state: { text: "ready" },
+      }),
+    } satisfies Simulation<{ text: string }, Record<string, never>>;
+
+    expect(staticSimulation.metadata.capabilities).toEqual([]);
   });
 
   it("accepts positive finite time steps", () => {

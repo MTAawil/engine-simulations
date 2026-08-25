@@ -1,5 +1,6 @@
 import {
   assertPositiveDeltaTime,
+  hasSimulationCapability,
   type Simulation,
   type SimulationLifecycleState,
   type SimulationMetadata,
@@ -55,26 +56,30 @@ export class SimulationHost<TState, TParameters> {
 
   play(): void {
     this.ensureUsable();
-    this.simulation.play();
+    const play = this.requirePlaybackMethod("play");
+    play();
     this.lifecycleState = "playing";
   }
 
   pause(): void {
     this.ensureUsable();
-    this.simulation.pause();
+    const pause = this.requirePlaybackMethod("pause");
+    pause();
     this.lifecycleState = "paused";
   }
 
   reset(): void {
     this.ensureUsable();
-    this.simulation.reset();
+    const reset = this.requirePlaybackMethod("reset");
+    reset();
     this.lifecycleState = "ready";
   }
 
   step(deltaTimeS: number): void {
     this.ensureUsable();
     assertPositiveDeltaTime(deltaTimeS);
-    this.simulation.step(deltaTimeS);
+    const step = this.requireCapabilityMethod("deterministicStep", "step");
+    step(deltaTimeS);
   }
 
   setParameter<TKey extends keyof TParameters>(
@@ -82,7 +87,8 @@ export class SimulationHost<TState, TParameters> {
     value: TParameters[TKey],
   ): void {
     this.ensureUsable();
-    this.simulation.setParameter(key, value);
+    const setParameter = this.requireCapabilityMethod("parameters", "setParameter");
+    setParameter(key, value);
   }
 
   getSnapshot(): SimulationSnapshot<TState> {
@@ -122,6 +128,27 @@ export class SimulationHost<TState, TParameters> {
     if (this.lifecycleState === "idle" || this.lifecycleState === "initializing") {
       throw new Error(`Simulation host is not ready: ${this.lifecycleState}.`);
     }
+  }
+
+  private requirePlaybackMethod<TKey extends "play" | "pause" | "reset">(
+    methodName: TKey,
+  ): NonNullable<Simulation<TState, TParameters>[TKey]> {
+    return this.requireCapabilityMethod("playback", methodName);
+  }
+
+  private requireCapabilityMethod<
+    TKey extends "play" | "pause" | "reset" | "step" | "setParameter",
+  >(
+    capability: SimulationMetadata["capabilities"][number],
+    methodName: TKey,
+  ): NonNullable<Simulation<TState, TParameters>[TKey]> {
+    const method = this.simulation[methodName];
+
+    if (!hasSimulationCapability(this.simulation.metadata, capability) || !method) {
+      throw new Error(`Simulation does not support ${capability}.`);
+    }
+
+    return method;
   }
 }
 

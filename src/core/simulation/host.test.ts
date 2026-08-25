@@ -102,6 +102,36 @@ describe("SimulationHost", () => {
     expect(host.getSnapshot().simulationTimeS).toBe(0.25);
   });
 
+  it("rejects unsupported capability calls instead of requiring no-op methods", async () => {
+    const state: TestState = { count: 0 };
+    const simulation: Simulation<TestState, TestParameters> = {
+      metadata: {
+        id: "static-simulation",
+        title: "Static Simulation",
+        subject: "physics",
+        summary: "A static surface.",
+        capabilities: [],
+      },
+      initialize: vi.fn(),
+      destroy: vi.fn(),
+      getSnapshot: vi.fn((): SimulationSnapshot<TestState> => ({
+        lifecycleState: "ready",
+        simulationTimeS: 0,
+        state,
+      })),
+    };
+    const host = new SimulationHost(simulation);
+
+    await host.mount();
+
+    expect(() => {
+      host.play();
+    }).toThrow("Simulation does not support playback.");
+    expect(() => {
+      host.setParameter("speed", 2);
+    }).toThrow("Simulation does not support parameters.");
+  });
+
   it("records initialization errors and prevents later use", async () => {
     const initializationError = new Error("Renderer failed to initialize.");
     const { simulation } = createSimulation({

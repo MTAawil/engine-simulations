@@ -66,7 +66,7 @@ Update rule:
 | SS-109 | Add minimal Three.js adapter only when needed        | DONE   | REVIEWED | Three.js `0.185.1` license verified as MIT; minimal adapter added with mount, render, resize, and dispose tests. Reviewed in Core V1 implementation review.       |
 | SS-110 | Add graph capability required by Prototype A         | DONE   | REVIEWED | Dependency-free SVG `TimeSeriesGraph` added with accessible labels, deterministic path, domain, and empty-state tests. Reviewed in Core V1 implementation review. |
 | SS-111 | Run Implementation Reviewer for Core V1              | DONE   | REVIEWED | Review saved in `docs/reviews/core-v1-implementation-review.md`; LOW ARIA ID issue fixed during review.                                                           |
-| SS-112 | Run Architecture Reviewer for Core V1                | DONE   | REVIEWED | Architecture Reviewer agent used `.codex/skills/architecture-reviewer/SKILL.md`; review saved in `docs/reviews/core-v1-architecture-review.md`.                   |
+| SS-112 | Run Architecture Reviewer for Core V1                | DONE   | REVIEWED | Architecture Reviewer subagent found one MEDIUM capability-contract issue; fixed and recorded in `docs/reviews/core-v1-architecture-review.md`.                   |
 
 ## EPIC-02: Electromagnetic Induction Specification
 
