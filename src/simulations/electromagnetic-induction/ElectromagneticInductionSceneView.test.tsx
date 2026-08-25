@@ -77,4 +77,35 @@ describe("ElectromagneticInductionSceneView", () => {
       }),
     );
   });
+
+  it("destroys renderer resources and disconnects resize observation on unmount", () => {
+    enableWebGLForTest();
+    const renderer = createRenderer();
+    const observe = vi.fn();
+    const disconnect = vi.fn();
+    const ResizeObserverStub = vi.fn(function ResizeObserverStub() {
+      return {
+        disconnect,
+        observe,
+      };
+    });
+
+    vi.stubGlobal("ResizeObserver", ResizeObserverStub);
+
+    const { unmount } = render(
+      <ElectromagneticInductionSceneView
+        createRenderer={() => renderer}
+        state={calculateElectromagneticInductionState(
+          0,
+          defaultElectromagneticInductionParameters,
+        )}
+      />,
+    );
+
+    unmount();
+
+    expect(observe).toHaveBeenCalledOnce();
+    expect(disconnect).toHaveBeenCalledOnce();
+    expect(renderer.destroy).toHaveBeenCalledOnce();
+  });
 });
