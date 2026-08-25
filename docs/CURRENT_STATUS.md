@@ -13,6 +13,7 @@ Phase 0: Repository Foundation baseline complete.
 - Local environment inspected: Node `v24.19.0`, npm `11.17.0`, pnpm `11.19.0`.
 - Current stable foundation tooling and licenses checked.
 - RTK installed locally as `rtk 0.42.0` at `C:\Users\admin\.local\bin\rtk.exe` and documented as an optional development tool.
+- Project tracker added at `docs/PROJECT_TRACKER.md` for Jira-style epic/task status and review tracking.
 - React, TypeScript, Vite, ESLint, Prettier, Vitest, and Testing Library foundation created.
 - Repository governance docs, reviewer playbooks, and project-local skill stubs created.
 - Directory-specific guidance added for simulation core, science, rendering, and simulations.

@@ -9,6 +9,7 @@ Start every significant session by reading:
 - `docs/ARCHITECTURE.md`
 - `docs/SIMULATION_CONTRACT.md`
 - `docs/QA_GATES.md`
+- `docs/PROJECT_TRACKER.md`
 
 Core rules:
 
@@ -19,6 +20,7 @@ Core rules:
 - Treat third-party libraries as read-only dependencies. Use adapters/wrappers before considering forks.
 - Before a major simulation, create a specification using `docs/ADDING_A_SIMULATION.md`.
 - Run reviewer playbooks sequentially at meaningful milestones. Use `.codex/skills/` when available, otherwise follow `docs/reviews/playbooks/`.
+- Update `docs/PROJECT_TRACKER.md` whenever task status or review status changes.
 - Update `docs/CURRENT_STATUS.md` after major milestones.
 
 Directory-specific rules may appear in nested `AGENTS.md` files.
