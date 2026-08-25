@@ -1,0 +1,79 @@
+.presentation-shell {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.presentation-shell__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.presentation-shell__header h2,
+.presentation-shell__header p {
+  margin: 0;
+}
+
+.presentation-shell__eyebrow {
+  color: #8dd8cf;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.presentation-shell__workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  gap: 16px;
+  align-items: start;
+}
+
+.presentation-shell__stage-column {
+  display: grid;
+  min-width: 0;
+  gap: 12px;
+}
+
+.presentation-shell__stage {
+  display: grid;
+  min-height: 280px;
+  overflow: hidden;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: #0f1417;
+}
+
+.presentation-shell__controls {
+  min-width: 0;
+}
+
+.presentation-shell__supporting-panel {
+  min-width: 0;
+}
+
+.presentation-shell--presenting .presentation-shell__header {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.presentation-shell--presenting .presentation-shell__workspace {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.presentation-shell--presenting .presentation-shell__stage {
+  min-height: min(72vh, 720px);
+}
+
+@media (max-width: 820px) {
+  .presentation-shell__workspace {
+    grid-template-columns: 1fr;
+  }
+}
