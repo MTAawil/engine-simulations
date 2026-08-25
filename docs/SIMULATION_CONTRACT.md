@@ -33,3 +33,4 @@ Scientific model code must be testable without a renderer. Renderer code receive
 - `Simulation<TState, TParameters>` is intentionally generic so scientific state and parameter types stay specific to each simulation.
 - `SimulationSnapshot<TState>` includes `simulationTimeS` to keep simulation time explicit and separate from rendering frame rate.
 - `assertPositiveDeltaTime` exists as a small shared guard for deterministic stepping. More timing behavior belongs in the timing foundation task, not in the contract itself.
+- `SimulationHost<TState, TParameters>` owns lifecycle state, initialization errors, abort cleanup, and safe delegation to the simulation contract.
