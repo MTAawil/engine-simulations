@@ -44,12 +44,10 @@ body {
 
 .prototype-workspace {
   display: grid;
-  height: 100vh;
   min-height: 100vh;
   grid-template-columns: minmax(640px, 1fr) minmax(360px, 440px);
   gap: clamp(24px, 3vw, 44px);
-  align-items: stretch;
-  overflow: hidden;
+  align-items: start;
   padding: clamp(24px, 3vw, 44px);
   background:
     linear-gradient(135deg, rgba(25, 111, 126, 0.2), transparent 36%),
@@ -64,22 +62,24 @@ body {
 
 .prototype-stage {
   display: grid;
-  align-content: center;
-  gap: 22px;
+  align-content: start;
+  gap: 18px;
 }
 
 .prototype-stage .induction-scene {
-  min-height: 360px;
+  min-height: 300px;
   margin-bottom: 0;
 }
 
 .prototype-stage .induction-scene__canvas {
-  min-height: 360px;
+  min-height: 300px;
 }
 
 .prototype-controls {
   display: grid;
   grid-template-rows: auto minmax(220px, 1fr);
+  position: sticky;
+  top: 24px;
   max-height: calc(100vh - 48px);
   align-content: start;
   gap: 18px;
@@ -122,12 +122,85 @@ h1 {
 
 .prototype-stage h1 {
   max-width: 620px;
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 .prototype-stage .lede {
   max-width: 660px;
-  font-size: 1.14rem;
+  font-size: 1.08rem;
+}
+
+.graph-panel {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(19, 25, 29, 0.58);
+}
+
+.graph-panel__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.graph-panel__header h2 {
+  margin: 0;
+}
+
+.graph-panel__header label {
+  display: grid;
+  gap: 4px;
+  min-width: 220px;
+  color: #dce8ea;
+}
+
+.graph-panel__header select {
+  min-height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  padding: 0 10px;
+  color: #f6fbfc;
+  background: #172025;
+}
+
+.time-series-graph {
+  min-width: 0;
+  margin: 0;
+}
+
+.time-series-graph svg {
+  display: block;
+  width: 100%;
+  height: 170px;
+  color: #6f858a;
+}
+
+.time-series-graph text {
+  fill: #c7d3d5;
+  font-size: 22px;
+}
+
+.time-series-graph figcaption {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+  color: #dce8ea;
+}
+
+.time-series-graph figcaption span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.time-series-graph figcaption span span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
 }
 
 h2 {

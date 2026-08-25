@@ -16,8 +16,9 @@ describe("ElectromagneticInductionPrototype", () => {
     expect(screen.getByLabelText("Preset")).toBeInTheDocument();
     expect(screen.getByLabelText("Magnetic field slider")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Live readings" })).toBeInTheDocument();
-    expect(screen.getByText("Single-turn flux")).toBeInTheDocument();
-    expect(screen.getByText("Flux linkage")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "EMF over time" })).toBeInTheDocument();
+    expect(screen.getAllByText("Single-turn flux").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Flux linkage").length).toBeGreaterThan(0);
     expect(screen.getByText("Lenz direction")).toBeInTheDocument();
   });
 
@@ -46,6 +47,16 @@ describe("ElectromagneticInductionPrototype", () => {
 
     expect(screen.getByText("0.18 s")).toBeInTheDocument();
     expect(screen.getByLabelText("Magnetic field value")).toHaveValue(0);
+  });
+
+  it("switches between model-generated graph series", async () => {
+    const user = userEvent.setup();
+    render(<ElectromagneticInductionPrototype />);
+
+    await user.selectOptions(screen.getByLabelText("Graph"), "currentA");
+
+    expect(screen.getByRole("img", { name: "Current over time" })).toBeInTheDocument();
+    expect(screen.getByText("Current (A)")).toBeInTheDocument();
   });
 
   it("advances with coarse playback ticks", () => {

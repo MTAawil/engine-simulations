@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { NumberParameterDefinition } from "../../core/parameters";
 import type { SimulationLifecycleState, SimulationPreset } from "../../core/simulation";
 import { PlaybackControls } from "../../ui/controls";
+import { TimeSeriesGraph, type GraphSeries } from "../../ui/graphs";
 import { TelemetryPanel, type TelemetryDatum } from "../../ui/telemetry";
 import { ElectromagneticInductionSceneView } from "./ElectromagneticInductionSceneView";
 import {
@@ -12,6 +13,42 @@ import {
 } from "./model";
 
 const stepDeltaTimeS = 0.1;
+const graphSampleCount = 80;
+const graphWindowS = 4;
+
+type GraphMetric = "singleTurnFluxWb" | "fluxLinkageWbTurns" | "emfV" | "currentA";
+
+const graphMetricOptions = [
+  {
+    id: "singleTurnFluxWb",
+    label: "Single-turn flux",
+    yLabel: "Flux (Wb)",
+    color: "#57c7b6",
+  },
+  {
+    id: "fluxLinkageWbTurns",
+    label: "Flux linkage",
+    yLabel: "Linkage (Wb-turns)",
+    color: "#e6b94b",
+  },
+  {
+    id: "emfV",
+    label: "EMF",
+    yLabel: "EMF (V)",
+    color: "#4f8cff",
+  },
+  {
+    id: "currentA",
+    label: "Current",
+    yLabel: "Current (A)",
+    color: "#f47fb3",
+  },
+] as const satisfies readonly {
+  id: GraphMetric;
+  label: string;
+  yLabel: string;
+  color: string;
+}[];
 
 const parameterDefinitions = [
   {
@@ -139,6 +176,7 @@ export function ElectromagneticInductionPrototype() {
     useState<SimulationLifecycleState>("ready");
   const [speedMultiplier, setSpeedMultiplier] = useState(1);
   const [selectedPresetId, setSelectedPresetId] = useState("default");
+  const [selectedGraphMetric, setSelectedGraphMetric] = useState<GraphMetric>("emfV");
 
   useEffect(() => {
     if (lifecycleState !== "playing") {
@@ -160,6 +198,13 @@ export function ElectromagneticInductionPrototype() {
   );
 
   const telemetry = useMemo(() => createTelemetry(state), [state]);
+  const selectedGraphOption = graphMetricOptions.find(
+    (option) => option.id === selectedGraphMetric,
+  );
+  const graphSeries = useMemo(
+    () => createGraphSeries(parameters, timeS, selectedGraphMetric),
+    [parameters, selectedGraphMetric, timeS],
+  );
 
   function updateParameter(
     key: keyof ElectromagneticInductionParameters,
@@ -201,6 +246,34 @@ export function ElectromagneticInductionPrototype() {
         </div>
 
         <ElectromagneticInductionSceneView state={state} />
+
+        <section className="graph-panel" aria-labelledby="graph-title">
+          <div className="graph-panel__header">
+            <h2 id="graph-title">Model graph</h2>
+            <label>
+              <span>Graph</span>
+              <select
+                value={selectedGraphMetric}
+                onChange={(event) => {
+                  setSelectedGraphMetric(event.target.value as GraphMetric);
+                }}
+              >
+                {graphMetricOptions.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <TimeSeriesGraph
+            title={`${selectedGraphOption?.label ?? "Model"} over time`}
+            xLabel="Time (s)"
+            yLabel={selectedGraphOption?.yLabel ?? "Value"}
+            series={graphSeries}
+            height={220}
+          />
+        </section>
       </div>
 
       <aside
@@ -374,6 +447,34 @@ function createTelemetry(
       id: "direction",
       label: "Lenz direction",
       value: formatDirection(state.inducedCurrentDirection),
+    },
+  ];
+}
+
+function createGraphSeries(
+  parameters: ElectromagneticInductionParameters,
+  currentTimeS: number,
+  metric: GraphMetric,
+): readonly GraphSeries[] {
+  const metricOption = graphMetricOptions.find((option) => option.id === metric);
+  const startTimeS = Math.max(0, currentTimeS - graphWindowS / 2);
+  const stepS = graphWindowS / (graphSampleCount - 1);
+  const points = Array.from({ length: graphSampleCount }, (_, index) => {
+    const sampleTimeS = startTimeS + index * stepS;
+    const sampleState = calculateElectromagneticInductionState(sampleTimeS, parameters);
+
+    return {
+      x: sampleTimeS,
+      y: sampleState[metric],
+    };
+  });
+
+  return [
+    {
+      id: metric,
+      label: metricOption?.label ?? metric,
+      color: metricOption?.color ?? "#57c7b6",
+      points,
     },
   ];
 }
