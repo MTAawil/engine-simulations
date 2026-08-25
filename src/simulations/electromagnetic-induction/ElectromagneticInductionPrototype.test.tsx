@@ -42,11 +42,11 @@ describe("ElectromagneticInductionPrototype", () => {
     render(<ElectromagneticInductionPrototype />);
 
     await user.click(screen.getByRole("button", { name: "Step" }));
-    expect(screen.getByText("0.28 s")).toBeInTheDocument();
+    expect(screen.getByText("0.10 s")).toBeInTheDocument();
 
     await user.selectOptions(screen.getByLabelText("Preset"), "no-field");
 
-    expect(screen.getByText("0.18 s")).toBeInTheDocument();
+    expect(screen.getByText("0.00 s")).toBeInTheDocument();
     expect(screen.getByLabelText("Magnetic field value")).toHaveValue(0);
   });
 
@@ -95,7 +95,7 @@ describe("ElectromagneticInductionPrototype", () => {
       vi.advanceTimersByTime(300);
     });
 
-    expect(screen.getByText("0.48 s")).toBeInTheDocument();
+    expect(screen.getByText("0.30 s")).toBeInTheDocument();
 
     vi.useRealTimers();
   });

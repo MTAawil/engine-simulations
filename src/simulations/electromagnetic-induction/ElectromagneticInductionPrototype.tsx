@@ -14,6 +14,7 @@ import {
 } from "./model";
 
 const stepDeltaTimeS = 0.1;
+const initialTimeS = 0;
 const graphSampleCount = 80;
 const graphWindowS = 4;
 
@@ -172,7 +173,7 @@ export function ElectromagneticInductionPrototype() {
   const [parameters, setParameters] = useState<ElectromagneticInductionParameters>(
     defaultElectromagneticInductionParameters,
   );
-  const [timeS, setTimeS] = useState(0.18);
+  const [timeS, setTimeS] = useState(initialTimeS);
   const [lifecycleState, setLifecycleState] =
     useState<SimulationLifecycleState>("ready");
   const [speedMultiplier, setSpeedMultiplier] = useState(1);
@@ -228,7 +229,7 @@ export function ElectromagneticInductionPrototype() {
 
     setSelectedPresetId(presetId);
     setLifecycleState("paused");
-    setTimeS(0.18);
+    setTimeS(initialTimeS);
     setParameters({
       ...defaultElectromagneticInductionParameters,
       ...(preset?.parameters ?? {}),
@@ -247,7 +248,7 @@ export function ElectromagneticInductionPrototype() {
       }}
       onReset={() => {
         setLifecycleState("ready");
-        setTimeS(0.18);
+        setTimeS(initialTimeS);
       }}
       onStep={() => {
         setLifecycleState("paused");
