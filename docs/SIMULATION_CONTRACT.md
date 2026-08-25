@@ -37,3 +37,4 @@ Scientific model code must be testable without a renderer. Renderer code receive
 - `SimulationClock` in `src/core/timing/clock.ts` separates real elapsed time from simulation time, supports play/pause/reset/manual step, and applies speed multipliers only when advancing during playback.
 - Parameter definitions in `src/core/parameters/definitions.ts` capture number, boolean, and choice controls with explicit labels, units where needed, defaults, and validation bounds.
 - `PlaybackControls` in `src/ui/controls/PlaybackControls.tsx` provides coarse React controls for play, pause, reset, deterministic step, and speed selection without subscribing to frame-rate simulation state.
+- `TelemetryPanel` and `EquationDisplay` in `src/ui/` provide typed UI foundations for model readouts and equations. Equations default to plain text and expose a renderer hook for future KaTeX-style rendering without adding that dependency early.

@@ -59,7 +59,7 @@ Update rule:
 | SS-103 | Implement deterministic timing foundation            | DONE   | PENDING | `SimulationClock` added with play, pause, reset, deterministic step, advance, and speed tests.            |
 | SS-104 | Implement parameter definitions and validation       | DONE   | PENDING | Parameter definitions added for number, boolean, choice defaults, units, bounds, and validation.          |
 | SS-105 | Implement common playback controls                   | DONE   | PENDING | `PlaybackControls` added with interaction tests for play, pause, reset, step, disabled states, and speed. |
-| SS-106 | Implement telemetry and equation display foundations | TODO   | PENDING | Coarse telemetry and future KaTeX integration point.                                                      |
+| SS-106 | Implement telemetry and equation display foundations | DONE   | PENDING | `TelemetryPanel` and `EquationDisplay` added with formatting, empty-state, and renderer-hook tests.       |
 | SS-107 | Implement presentation mode foundation               | TODO   | PENDING | 16:9-friendly, reduced UI, stable teaching layout.                                                        |
 | SS-108 | Implement renderer lifecycle boundary                | TODO   | PENDING | Cleanup contract for Three.js/PixiJS renderers.                                                           |
 | SS-109 | Add minimal Three.js adapter only when needed        | TODO   | PENDING | Verify license before adding dependency.                                                                  |
