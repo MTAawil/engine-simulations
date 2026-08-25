@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 export type Equation = {
   id: string;
@@ -26,17 +26,19 @@ export function EquationDisplay({
   renderEquation = renderPlainEquation,
   emptyMessage = "No equations available",
 }: EquationDisplayProps) {
+  const titleId = useId();
+
   return (
-    <section className="equation-display" aria-labelledby="equation-display-title">
-      <h2 id="equation-display-title">{title}</h2>
+    <section className="equation-display" aria-labelledby={titleId}>
+      <h2 id={titleId}>{title}</h2>
       {equations.length === 0 ? (
         <p>{emptyMessage}</p>
       ) : (
         <ul>
           {equations.map((equation) => (
             <li key={equation.id}>
-              <article aria-labelledby={`${equation.id}-label`}>
-                <h3 id={`${equation.id}-label`}>{equation.label}</h3>
+              <article aria-labelledby={`${titleId}-${equation.id}-label`}>
+                <h3 id={`${titleId}-${equation.id}-label`}>{equation.label}</h3>
                 <div aria-label={`${equation.label} equation`}>
                   {renderEquation(equation)}
                 </div>

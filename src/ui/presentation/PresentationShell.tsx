@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 import "./presentation.css";
 
 export type PresentationShellProps = {
@@ -20,6 +20,7 @@ export function PresentationShell({
   supportingPanel,
   showSupportingPanelInPresentation = false,
 }: PresentationShellProps) {
+  const titleId = useId();
   const shouldShowSupportingPanel =
     supportingPanel && (!isPresentationMode || showSupportingPanelInPresentation);
 
@@ -28,14 +29,14 @@ export function PresentationShell({
       className={`presentation-shell${
         isPresentationMode ? " presentation-shell--presenting" : ""
       }`}
-      aria-labelledby="presentation-shell-title"
+      aria-labelledby={titleId}
     >
       <header className="presentation-shell__header">
         <div>
           <p className="presentation-shell__eyebrow">
             {isPresentationMode ? "Presentation" : "Simulation"}
           </p>
-          <h2 id="presentation-shell-title">{title}</h2>
+          <h2 id={titleId}>{title}</h2>
           {subtitle ? <p>{subtitle}</p> : null}
         </div>
       </header>

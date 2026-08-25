@@ -4,7 +4,7 @@ Date: 2026-08-25
 
 ## Phase
 
-Phase 0: Repository Foundation baseline complete.
+Phase 1: Simulation Studio Core V1 complete and reviewed.
 
 ## Completed
 
@@ -20,13 +20,16 @@ Phase 0: Repository Foundation baseline complete.
 - Fast QA passed: lint, typecheck, and unit tests.
 - Production build passed.
 - Phase 0 Architecture Reviewer completed with no BLOCKER or HIGH findings.
+- Core simulation contract, lifecycle host, deterministic clock, parameter definitions, playback controls, telemetry/equation UI, presentation shell, renderer lifecycle boundary, minimal Three.js adapter, and dependency-free graph foundation completed.
+- Core V1 Implementation Reviewer completed. One LOW reusable ARIA ID issue was fixed during review; no BLOCKER, HIGH, or MEDIUM findings remain open.
 
 ## Known Issues
 
 - `qa:full` contains transparent placeholders for Playwright and visual tests until a real interactive experience exists.
 - `pnpm-workspace.yaml` exists only for pnpm supply-chain policy state; this is not a monorepo.
 - RTK is optional, installed locally, and should be used only when it reduces noisy routine command output without hiding important diagnostics.
+- Browser interaction and visual regression checks remain placeholders until the first prototype has a real interactive scene.
 
 ## Next Milestone
 
-Begin Phase 1: Simulation Studio Core V1. Implement only shared capabilities required for the Electromagnetic Induction prototype: lifecycle, timing, parameters, play/pause/reset/step, presentation mode foundation, controls, telemetry, equation display, renderer lifecycle, Three.js integration, and the graph capability required by Prototype A.
+Begin Phase 2: Electromagnetic Induction Specification. Create the simulation specification before implementing the prototype: educational objectives, scientific assumptions, formulas, units, controls, presets, telemetry, graph requirements, acceptance criteria, and review notes.

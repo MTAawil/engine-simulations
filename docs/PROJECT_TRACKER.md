@@ -28,14 +28,14 @@ Update rule:
 
 ## Epic Summary
 
-| Epic    | Name                                    | Status      | Review   | Notes                                                                                                  |
-| ------- | --------------------------------------- | ----------- | -------- | ------------------------------------------------------------------------------------------------------ |
-| EPIC-00 | Repository Foundation                   | REVIEWED    | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`. |
-| EPIC-01 | Simulation Studio Core V1               | IN_PROGRESS | PENDING  | Next milestone. Build only capabilities required by Prototype A.                                       |
-| EPIC-02 | Electromagnetic Induction Specification | TODO        | PENDING  | Must be completed before prototype implementation.                                                     |
-| EPIC-03 | Electromagnetic Induction Prototype     | TODO        | PENDING  | First major simulation. Requires scientific, visual/UX, and release QA reviews.                        |
-| EPIC-04 | Prototype A Release Candidate           | TODO        | PENDING  | Prepare owner testing guide, screenshots if supported, build, and known issues.                        |
-| EPIC-05 | Meiosis Prototype                       | TODO        | PENDING  | Parked until Prototype A is approved unless owner redirects.                                           |
+| Epic    | Name                                    | Status   | Review   | Notes                                                                                                  |
+| ------- | --------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------ |
+| EPIC-00 | Repository Foundation                   | REVIEWED | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`. |
+| EPIC-01 | Simulation Studio Core V1               | REVIEWED | REVIEWED | Core V1 complete. Implementation review saved in `docs/reviews/core-v1-implementation-review.md`.      |
+| EPIC-02 | Electromagnetic Induction Specification | TODO     | PENDING  | Must be completed before prototype implementation.                                                     |
+| EPIC-03 | Electromagnetic Induction Prototype     | TODO     | PENDING  | First major simulation. Requires scientific, visual/UX, and release QA reviews.                        |
+| EPIC-04 | Prototype A Release Candidate           | TODO     | PENDING  | Prepare owner testing guide, screenshots if supported, build, and known issues.                        |
+| EPIC-05 | Meiosis Prototype                       | TODO     | PENDING  | Parked until Prototype A is approved unless owner redirects.                                           |
 
 ## EPIC-00: Repository Foundation
 
@@ -52,19 +52,19 @@ Update rule:
 
 ## EPIC-01: Simulation Studio Core V1
 
-| Task   | Title                                                | Status | Review  | Notes                                                                                                                  |
-| ------ | ---------------------------------------------------- | ------ | ------- | ---------------------------------------------------------------------------------------------------------------------- |
-| SS-101 | Define core simulation TypeScript contract           | DONE   | PENDING | `src/core/simulation/types.ts` added with focused contract tests.                                                      |
-| SS-102 | Implement lifecycle host                             | DONE   | PENDING | `SimulationHost` added with mount, error, abort, destroy, and delegation tests.                                        |
-| SS-103 | Implement deterministic timing foundation            | DONE   | PENDING | `SimulationClock` added with play, pause, reset, deterministic step, advance, and speed tests.                         |
-| SS-104 | Implement parameter definitions and validation       | DONE   | PENDING | Parameter definitions added for number, boolean, choice defaults, units, bounds, and validation.                       |
-| SS-105 | Implement common playback controls                   | DONE   | PENDING | `PlaybackControls` added with interaction tests for play, pause, reset, step, disabled states, and speed.              |
-| SS-106 | Implement telemetry and equation display foundations | DONE   | PENDING | `TelemetryPanel` and `EquationDisplay` added with formatting, empty-state, and renderer-hook tests.                    |
-| SS-107 | Implement presentation mode foundation               | DONE   | PENDING | `PresentationShell` added with 16:9 stage, reduced presentation layout, and supporting-panel tests.                    |
-| SS-108 | Implement renderer lifecycle boundary                | DONE   | PENDING | `RendererHost` and `RendererDisposalStack` added with lifecycle, error, destroy, and cleanup-order tests.              |
-| SS-109 | Add minimal Three.js adapter only when needed        | DONE   | PENDING | Three.js `0.185.1` license verified as MIT; minimal adapter added with mount, render, resize, and dispose tests.       |
-| SS-110 | Add graph capability required by Prototype A         | DONE   | PENDING | Dependency-free SVG `TimeSeriesGraph` added with accessible labels, deterministic path, domain, and empty-state tests. |
-| SS-111 | Run Implementation Reviewer for Core V1              | TODO   | PENDING | Sequential review after core milestone is complete.                                                                    |
+| Task   | Title                                                | Status | Review   | Notes                                                                                                                                                             |
+| ------ | ---------------------------------------------------- | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SS-101 | Define core simulation TypeScript contract           | DONE   | REVIEWED | `src/core/simulation/types.ts` added with focused contract tests. Reviewed in Core V1 implementation review.                                                      |
+| SS-102 | Implement lifecycle host                             | DONE   | REVIEWED | `SimulationHost` added with mount, error, abort, destroy, and delegation tests. Reviewed in Core V1 implementation review.                                        |
+| SS-103 | Implement deterministic timing foundation            | DONE   | REVIEWED | `SimulationClock` added with play, pause, reset, deterministic step, advance, and speed tests. Reviewed in Core V1 implementation review.                         |
+| SS-104 | Implement parameter definitions and validation       | DONE   | REVIEWED | Parameter definitions added for number, boolean, choice defaults, units, bounds, and validation. Reviewed in Core V1 implementation review.                       |
+| SS-105 | Implement common playback controls                   | DONE   | REVIEWED | `PlaybackControls` added with interaction tests for play, pause, reset, step, disabled states, and speed. Reviewed in Core V1 implementation review.              |
+| SS-106 | Implement telemetry and equation display foundations | DONE   | REVIEWED | `TelemetryPanel` and `EquationDisplay` added with formatting, empty-state, and renderer-hook tests. Reviewed in Core V1 implementation review.                    |
+| SS-107 | Implement presentation mode foundation               | DONE   | REVIEWED | `PresentationShell` added with 16:9 stage, reduced presentation layout, and supporting-panel tests. Reviewed in Core V1 implementation review.                    |
+| SS-108 | Implement renderer lifecycle boundary                | DONE   | REVIEWED | `RendererHost` and `RendererDisposalStack` added with lifecycle, error, destroy, and cleanup-order tests. Reviewed in Core V1 implementation review.              |
+| SS-109 | Add minimal Three.js adapter only when needed        | DONE   | REVIEWED | Three.js `0.185.1` license verified as MIT; minimal adapter added with mount, render, resize, and dispose tests. Reviewed in Core V1 implementation review.       |
+| SS-110 | Add graph capability required by Prototype A         | DONE   | REVIEWED | Dependency-free SVG `TimeSeriesGraph` added with accessible labels, deterministic path, domain, and empty-state tests. Reviewed in Core V1 implementation review. |
+| SS-111 | Run Implementation Reviewer for Core V1              | DONE   | REVIEWED | Review saved in `docs/reviews/core-v1-implementation-review.md`; LOW ARIA ID issue fixed during review.                                                           |
 
 ## EPIC-02: Electromagnetic Induction Specification
 

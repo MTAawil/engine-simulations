@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { formatTelemetryValue } from "./formatTelemetryValue";
 
 export type TelemetryValue = string | number | boolean;
@@ -23,9 +24,11 @@ export function TelemetryPanel({
   data,
   emptyMessage = "No telemetry available",
 }: TelemetryPanelProps) {
+  const titleId = useId();
+
   return (
-    <section className="telemetry-panel" aria-labelledby="telemetry-panel-title">
-      <h2 id="telemetry-panel-title">{title}</h2>
+    <section className="telemetry-panel" aria-labelledby={titleId}>
+      <h2 id={titleId}>{title}</h2>
       {data.length === 0 ? (
         <p>{emptyMessage}</p>
       ) : (
@@ -36,13 +39,15 @@ export function TelemetryPanel({
               <dd>
                 <output
                   aria-describedby={
-                    datum.description ? `${datum.id}-description` : undefined
+                    datum.description ? `${titleId}-${datum.id}-description` : undefined
                   }
                 >
                   {formatTelemetryValue(datum)}
                 </output>
                 {datum.description ? (
-                  <span id={`${datum.id}-description`}>{datum.description}</span>
+                  <span id={`${titleId}-${datum.id}-description`}>
+                    {datum.description}
+                  </span>
                 ) : null}
               </dd>
             </div>

@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { createTimeSeriesPath, deriveGraphDomain, getGraphPadding } from "./graphMath";
 
 export type GraphPoint = {
@@ -44,17 +45,19 @@ export function TimeSeriesGraph({
   height = 360,
   emptyMessage = "No graph data available",
 }: TimeSeriesGraphProps) {
+  const titleId = useId();
+  const axisLabelsId = useId();
   const hasData = series.some((item) => item.points.length > 0);
   const padding = getGraphPadding();
 
   return (
-    <figure className="time-series-graph" aria-labelledby="time-series-graph-title">
+    <figure className="time-series-graph" aria-labelledby={titleId}>
       <svg
         role="img"
         viewBox={`0 0 ${String(width)} ${String(height)}`}
-        aria-describedby="graph-axis-labels"
+        aria-describedby={axisLabelsId}
       >
-        <title id="time-series-graph-title">{title}</title>
+        <title id={titleId}>{title}</title>
         <g stroke="currentColor" strokeWidth="1">
           <line
             x1={padding.left}
@@ -88,7 +91,7 @@ export function TimeSeriesGraph({
           </text>
         )}
 
-        <g id="graph-axis-labels">
+        <g id={axisLabelsId}>
           <text x={width / 2} y={height - 8} textAnchor="middle">
             {xLabel}
           </text>
