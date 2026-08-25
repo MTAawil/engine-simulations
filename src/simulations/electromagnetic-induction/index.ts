@@ -1,3 +1,4 @@
+export { ElectromagneticInductionPrototype } from "./ElectromagneticInductionPrototype";
 export {
   ElectromagneticInductionSceneView,
   type ElectromagneticInductionSceneViewProps,

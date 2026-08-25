@@ -42,6 +42,51 @@ body {
     #111418;
 }
 
+.prototype-workspace {
+  display: grid;
+  height: 100vh;
+  min-height: 100vh;
+  grid-template-columns: minmax(640px, 1fr) minmax(360px, 440px);
+  gap: clamp(24px, 3vw, 44px);
+  align-items: stretch;
+  overflow: hidden;
+  padding: clamp(24px, 3vw, 44px);
+  background:
+    linear-gradient(135deg, rgba(25, 111, 126, 0.2), transparent 36%),
+    radial-gradient(circle at 88% 18%, rgba(238, 187, 77, 0.16), transparent 24%),
+    #111418;
+}
+
+.prototype-stage,
+.prototype-controls {
+  min-width: 0;
+}
+
+.prototype-stage {
+  display: grid;
+  align-content: center;
+  gap: 22px;
+}
+
+.prototype-stage .induction-scene {
+  min-height: 360px;
+  margin-bottom: 0;
+}
+
+.prototype-stage .induction-scene__canvas {
+  min-height: 360px;
+}
+
+.prototype-controls {
+  display: grid;
+  grid-template-rows: auto minmax(220px, 1fr);
+  max-height: calc(100vh - 48px);
+  align-content: start;
+  gap: 18px;
+  overflow: hidden;
+  padding-right: 4px;
+}
+
 .intro,
 .status-panel {
   min-width: 0;
@@ -75,6 +120,16 @@ h1 {
   word-break: break-word;
 }
 
+.prototype-stage h1 {
+  max-width: 620px;
+  font-size: 4rem;
+}
+
+.prototype-stage .lede {
+  max-width: 660px;
+  font-size: 1.14rem;
+}
+
 h2 {
   margin-bottom: 20px;
   color: #ffffff;
@@ -97,6 +152,144 @@ h2 {
   padding: clamp(20px, 4vw, 32px);
   background: rgba(19, 25, 29, 0.74);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+}
+
+.control-panel,
+.telemetry-panel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(19, 25, 29, 0.74);
+  box-shadow: 0 20px 68px rgba(0, 0, 0, 0.22);
+}
+
+.control-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.playback-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.playback-controls button,
+.playback-controls select,
+.preset-select select,
+.parameter-control input[type="number"] {
+  min-height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  color: #f6fbfc;
+  background: #172025;
+}
+
+.playback-controls button {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.playback-controls button:disabled {
+  cursor: not-allowed;
+  color: #6f7d81;
+}
+
+.playback-controls label,
+.preset-select {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 6px;
+  color: #dce8ea;
+  font-size: 0.9rem;
+}
+
+.playback-controls select,
+.preset-select select {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.parameter-grid {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  max-height: 290px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.parameter-grid legend {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.parameter-control {
+  display: grid;
+  gap: 8px;
+}
+
+.parameter-control label,
+.parameter-control__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #dce8ea;
+}
+
+.parameter-control output,
+.parameter-control__meta span {
+  color: #85d9cf;
+  font-variant-numeric: tabular-nums;
+}
+
+.parameter-control input[type="range"] {
+  width: 100%;
+  accent-color: #57c7b6;
+}
+
+.parameter-control input[type="number"] {
+  width: 96px;
+  padding: 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.telemetry-panel h2 {
+  margin-bottom: 14px;
+}
+
+.telemetry-panel dl {
+  display: grid;
+  gap: 10px;
+  max-height: 300px;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.telemetry-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto;
+  gap: 16px;
+  align-items: baseline;
+  color: #dce8ea;
+}
+
+.telemetry-row dt {
+  color: #aebdc0;
+}
+
+.telemetry-row dd {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
 }
 
 .induction-scene {

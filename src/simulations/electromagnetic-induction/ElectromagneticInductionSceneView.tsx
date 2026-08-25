@@ -30,6 +30,7 @@ export function ElectromagneticInductionSceneView({
     }),
     [state],
   );
+  const snapshotRef = useRef(snapshot);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -45,7 +46,7 @@ export function ElectromagneticInductionSceneView({
       width: container.clientWidth || 960,
       height: container.clientHeight || 540,
     });
-    host.render(snapshot);
+    host.render(snapshotRef.current);
     hostRef.current = host;
 
     const resizeObserver =
@@ -60,7 +61,7 @@ export function ElectromagneticInductionSceneView({
               width: entry.contentRect.width,
               height: entry.contentRect.height,
             });
-            host.render(snapshot);
+            host.render(snapshotRef.current);
           });
 
     resizeObserver?.observe(container);
@@ -70,7 +71,12 @@ export function ElectromagneticInductionSceneView({
       host.destroy();
       hostRef.current = null;
     };
-  }, [createRenderer, snapshot]);
+  }, [createRenderer]);
+
+  useEffect(() => {
+    snapshotRef.current = snapshot;
+    hostRef.current?.render(snapshot);
+  }, [snapshot]);
 
   return (
     <div className="induction-scene" aria-label="Electromagnetic induction 3D scene">

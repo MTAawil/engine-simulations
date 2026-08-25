@@ -81,18 +81,18 @@ Update rule:
 
 ## EPIC-03: Electromagnetic Induction Prototype
 
-| Task   | Title                                         | Status | Review  | Notes                                                                                              |
-| ------ | --------------------------------------------- | ------ | ------- | -------------------------------------------------------------------------------------------------- |
-| SS-301 | Implement scientific model                    | DONE   | PENDING | Pure deterministic TypeScript model added in `src/simulations/electromagnetic-induction/model.ts`. |
-| SS-302 | Add scientific golden tests                   | DONE   | PENDING | Golden tests cover flux/linkage, EMF, current, direction threshold, edge cases, and validation.    |
-| SS-303 | Implement Three.js visual scene               | DONE   | PENDING | Scene consumes model snapshots; fast QA, build, and desktop nonblank screenshot checks pass.       |
-| SS-304 | Implement controls, presets, and telemetry UI | TODO   | PENDING | Accessible, teacher-friendly.                                                                      |
-| SS-305 | Implement graph/telemetry behavior            | TODO   | PENDING | Must correspond to model state.                                                                    |
-| SS-306 | Implement presentation mode behavior          | TODO   | PENDING | Stable 16:9 teaching composition.                                                                  |
-| SS-307 | Verify resource cleanup                       | TODO   | PENDING | No leaked animation loops/listeners/Three resources.                                               |
-| SS-308 | Run Scientific Reviewer                       | TODO   | PENDING | Resolve significant findings before visual review.                                                 |
-| SS-309 | Run Visual / UX Reviewer                      | TODO   | PENDING | Resolve significant findings before release QA.                                                    |
-| SS-310 | Run Release QA Reviewer                       | TODO   | PENDING | Resolve blockers/high issues before release candidate.                                             |
+| Task   | Title                                         | Status      | Review  | Notes                                                                                              |
+| ------ | --------------------------------------------- | ----------- | ------- | -------------------------------------------------------------------------------------------------- |
+| SS-301 | Implement scientific model                    | DONE        | PENDING | Pure deterministic TypeScript model added in `src/simulations/electromagnetic-induction/model.ts`. |
+| SS-302 | Add scientific golden tests                   | DONE        | PENDING | Golden tests cover flux/linkage, EMF, current, direction threshold, edge cases, and validation.    |
+| SS-303 | Implement Three.js visual scene               | DONE        | PENDING | Scene consumes model snapshots; fast QA, build, and desktop nonblank screenshot checks pass.       |
+| SS-304 | Implement controls, presets, and telemetry UI | DONE        | PENDING | Controls, presets, playback, and live model-backed readings pass fast QA, build, and desktop check. |
+| SS-305 | Implement graph/telemetry behavior            | TODO        | PENDING | Must correspond to model state.                                                                    |
+| SS-306 | Implement presentation mode behavior          | TODO        | PENDING | Stable 16:9 teaching composition.                                                                  |
+| SS-307 | Verify resource cleanup                       | TODO        | PENDING | No leaked animation loops/listeners/Three resources.                                               |
+| SS-308 | Run Scientific Reviewer                       | TODO        | PENDING | Resolve significant findings before visual review.                                                 |
+| SS-309 | Run Visual / UX Reviewer                      | TODO        | PENDING | Resolve significant findings before release QA.                                                    |
+| SS-310 | Run Release QA Reviewer                       | TODO        | PENDING | Resolve blockers/high issues before release candidate.                                             |
 
 ## EPIC-04: Prototype A Release Candidate
 

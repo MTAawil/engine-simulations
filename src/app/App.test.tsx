@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { App } from "./App";
 
 describe("App", () => {
-  it("renders the electromagnetic induction prototype status", () => {
+  it("renders the electromagnetic induction prototype workspace", () => {
     render(<App />);
 
     expect(
@@ -11,6 +11,7 @@ describe("App", () => {
         name: /electromagnetic induction prototype/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/Prototype visual scene/i)).toBeInTheDocument();
+    expect(screen.getByText(/Controls and telemetry/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Live readings" })).toBeInTheDocument();
   });
 });
