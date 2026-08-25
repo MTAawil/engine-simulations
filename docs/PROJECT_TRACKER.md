@@ -52,19 +52,19 @@ Update rule:
 
 ## EPIC-01: Simulation Studio Core V1
 
-| Task   | Title                                                | Status | Review  | Notes                                                                                                            |
-| ------ | ---------------------------------------------------- | ------ | ------- | ---------------------------------------------------------------------------------------------------------------- |
-| SS-101 | Define core simulation TypeScript contract           | DONE   | PENDING | `src/core/simulation/types.ts` added with focused contract tests.                                                |
-| SS-102 | Implement lifecycle host                             | DONE   | PENDING | `SimulationHost` added with mount, error, abort, destroy, and delegation tests.                                  |
-| SS-103 | Implement deterministic timing foundation            | DONE   | PENDING | `SimulationClock` added with play, pause, reset, deterministic step, advance, and speed tests.                   |
-| SS-104 | Implement parameter definitions and validation       | DONE   | PENDING | Parameter definitions added for number, boolean, choice defaults, units, bounds, and validation.                 |
-| SS-105 | Implement common playback controls                   | DONE   | PENDING | `PlaybackControls` added with interaction tests for play, pause, reset, step, disabled states, and speed.        |
-| SS-106 | Implement telemetry and equation display foundations | DONE   | PENDING | `TelemetryPanel` and `EquationDisplay` added with formatting, empty-state, and renderer-hook tests.              |
-| SS-107 | Implement presentation mode foundation               | DONE   | PENDING | `PresentationShell` added with 16:9 stage, reduced presentation layout, and supporting-panel tests.              |
-| SS-108 | Implement renderer lifecycle boundary                | DONE   | PENDING | `RendererHost` and `RendererDisposalStack` added with lifecycle, error, destroy, and cleanup-order tests.        |
-| SS-109 | Add minimal Three.js adapter only when needed        | DONE   | PENDING | Three.js `0.185.1` license verified as MIT; minimal adapter added with mount, render, resize, and dispose tests. |
-| SS-110 | Add graph capability required by Prototype A         | TODO   | PENDING | Choose D3/Plotly/custom only after specification clarifies need.                                                 |
-| SS-111 | Run Implementation Reviewer for Core V1              | TODO   | PENDING | Sequential review after core milestone is complete.                                                              |
+| Task   | Title                                                | Status | Review  | Notes                                                                                                                  |
+| ------ | ---------------------------------------------------- | ------ | ------- | ---------------------------------------------------------------------------------------------------------------------- |
+| SS-101 | Define core simulation TypeScript contract           | DONE   | PENDING | `src/core/simulation/types.ts` added with focused contract tests.                                                      |
+| SS-102 | Implement lifecycle host                             | DONE   | PENDING | `SimulationHost` added with mount, error, abort, destroy, and delegation tests.                                        |
+| SS-103 | Implement deterministic timing foundation            | DONE   | PENDING | `SimulationClock` added with play, pause, reset, deterministic step, advance, and speed tests.                         |
+| SS-104 | Implement parameter definitions and validation       | DONE   | PENDING | Parameter definitions added for number, boolean, choice defaults, units, bounds, and validation.                       |
+| SS-105 | Implement common playback controls                   | DONE   | PENDING | `PlaybackControls` added with interaction tests for play, pause, reset, step, disabled states, and speed.              |
+| SS-106 | Implement telemetry and equation display foundations | DONE   | PENDING | `TelemetryPanel` and `EquationDisplay` added with formatting, empty-state, and renderer-hook tests.                    |
+| SS-107 | Implement presentation mode foundation               | DONE   | PENDING | `PresentationShell` added with 16:9 stage, reduced presentation layout, and supporting-panel tests.                    |
+| SS-108 | Implement renderer lifecycle boundary                | DONE   | PENDING | `RendererHost` and `RendererDisposalStack` added with lifecycle, error, destroy, and cleanup-order tests.              |
+| SS-109 | Add minimal Three.js adapter only when needed        | DONE   | PENDING | Three.js `0.185.1` license verified as MIT; minimal adapter added with mount, render, resize, and dispose tests.       |
+| SS-110 | Add graph capability required by Prototype A         | DONE   | PENDING | Dependency-free SVG `TimeSeriesGraph` added with accessible labels, deterministic path, domain, and empty-state tests. |
+| SS-111 | Run Implementation Reviewer for Core V1              | TODO   | PENDING | Sequential review after core milestone is complete.                                                                    |
 
 ## EPIC-02: Electromagnetic Induction Specification
 
