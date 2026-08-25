@@ -61,7 +61,7 @@ Update rule:
 | SS-105 | Implement common playback controls                   | DONE   | PENDING | `PlaybackControls` added with interaction tests for play, pause, reset, step, disabled states, and speed. |
 | SS-106 | Implement telemetry and equation display foundations | DONE   | PENDING | `TelemetryPanel` and `EquationDisplay` added with formatting, empty-state, and renderer-hook tests.       |
 | SS-107 | Implement presentation mode foundation               | DONE   | PENDING | `PresentationShell` added with 16:9 stage, reduced presentation layout, and supporting-panel tests.       |
-| SS-108 | Implement renderer lifecycle boundary                | TODO   | PENDING | Cleanup contract for Three.js/PixiJS renderers.                                                           |
+| SS-108 | Implement renderer lifecycle boundary                | DONE   | PENDING | `RendererHost` and `RendererDisposalStack` added with lifecycle, error, destroy, and cleanup-order tests. |
 | SS-109 | Add minimal Three.js adapter only when needed        | TODO   | PENDING | Verify license before adding dependency.                                                                  |
 | SS-110 | Add graph capability required by Prototype A         | TODO   | PENDING | Choose D3/Plotly/custom only after specification clarifies need.                                          |
 | SS-111 | Run Implementation Reviewer for Core V1              | TODO   | PENDING | Sequential review after core milestone is complete.                                                       |
