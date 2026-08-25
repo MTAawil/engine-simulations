@@ -12,7 +12,7 @@ Phase 0: Repository Foundation baseline complete.
 - Master project instruction reviewed.
 - Local environment inspected: Node `v24.19.0`, npm `11.17.0`, pnpm `11.19.0`.
 - Current stable foundation tooling and licenses checked.
-- RTK checked locally; not currently installed and documented as optional.
+- RTK installed locally as `rtk 0.42.0` at `C:\Users\admin\.local\bin\rtk.exe` and documented as an optional development tool.
 - React, TypeScript, Vite, ESLint, Prettier, Vitest, and Testing Library foundation created.
 - Repository governance docs, reviewer playbooks, and project-local skill stubs created.
 - Directory-specific guidance added for simulation core, science, rendering, and simulations.
@@ -24,7 +24,7 @@ Phase 0: Repository Foundation baseline complete.
 
 - `qa:full` contains transparent placeholders for Playwright and visual tests until a real interactive experience exists.
 - `pnpm-workspace.yaml` exists only for pnpm supply-chain policy state; this is not a monorepo.
-- RTK is optional and currently unavailable locally.
+- RTK is optional, installed locally, and should be used only when it reduces noisy routine command output without hiding important diagnostics.
 
 ## Next Milestone
 
