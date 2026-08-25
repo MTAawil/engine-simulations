@@ -33,7 +33,7 @@ Update rule:
 | ------- | --------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------ |
 | EPIC-00 | Repository Foundation                   | REVIEWED | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`. |
 | EPIC-01 | Simulation Studio Core V1               | REVIEWED | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                 |
-| EPIC-02 | Electromagnetic Induction Specification | TODO     | PENDING  | Must be completed before prototype implementation.                                                     |
+| EPIC-02 | Electromagnetic Induction Specification | REVIEWED | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.        |
 | EPIC-03 | Electromagnetic Induction Prototype     | TODO     | PENDING  | First major simulation. Requires scientific, visual/UX, and release QA reviews.                        |
 | EPIC-04 | Prototype A Release Candidate           | TODO     | PENDING  | Prepare owner testing guide, screenshots if supported, build, and known issues.                        |
 | EPIC-05 | Meiosis Prototype                       | TODO     | PENDING  | Parked until Prototype A is approved unless owner redirects.                                           |
@@ -70,14 +70,14 @@ Update rule:
 
 ## EPIC-02: Electromagnetic Induction Specification
 
-| Task   | Title                                                         | Status | Review  | Notes                                                                  |
-| ------ | ------------------------------------------------------------- | ------ | ------- | ---------------------------------------------------------------------- |
-| SS-201 | Choose analytically clear induction setup                     | TODO   | PENDING | Avoid visually attractive but scientifically misleading approximation. |
-| SS-202 | Document educational objectives and concepts                  | TODO   | PENDING | Flux, Faraday law, Lenz direction, parameters as selected.             |
-| SS-203 | Document formulas, assumptions, units, and tolerances         | TODO   | PENDING | Required before scientific implementation.                             |
-| SS-204 | Define controls, presets, telemetry, graph states, and labels | TODO   | PENDING | Teacher-friendly and presentation-ready.                               |
-| SS-205 | Define acceptance criteria and test cases                     | TODO   | PENDING | Include scientific golden tests and interaction expectations.          |
-| SS-206 | Review specification for architecture/science risk            | TODO   | PENDING | Use relevant playbooks; store meaningful review if substantial.        |
+| Task   | Title                                                         | Status | Review   | Notes                                                                                                                                                                  |
+| ------ | ------------------------------------------------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SS-201 | Choose analytically clear induction setup                     | DONE   | REVIEWED | Rotating rectangular coil in a uniform magnetic field selected in `src/simulations/electromagnetic-induction/SPEC.md`. Reviewed by Scientific and Architecture agents. |
+| SS-202 | Document educational objectives and concepts                  | DONE   | REVIEWED | Flux, Faraday law, Lenz direction, and parameter concepts documented in the specification. Reviewed in spec review.                                                    |
+| SS-203 | Document formulas, assumptions, units, and tolerances         | DONE   | REVIEWED | Analytical formulas, assumptions, SI units, ranges, and model-test tolerance documented. Scientific findings resolved.                                                 |
+| SS-204 | Define controls, presets, telemetry, graph states, and labels | DONE   | REVIEWED | Controls, presets, telemetry, graphs, visual states, and labels documented in the specification. Reviewed in spec review.                                              |
+| SS-205 | Define acceptance criteria and test cases                     | DONE   | REVIEWED | Scientific golden tests, edge cases, accessibility notes, performance concerns, and acceptance criteria documented. Reviewed in spec review.                           |
+| SS-206 | Review specification for architecture/science risk            | DONE   | REVIEWED | Scientific and Architecture Reviewer subagents completed; review saved in `docs/reviews/electromagnetic-induction-spec-review.md`.                                     |
 
 ## EPIC-03: Electromagnetic Induction Prototype
 

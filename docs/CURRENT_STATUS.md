@@ -4,7 +4,7 @@ Date: 2026-08-25
 
 ## Phase
 
-Phase 1: Simulation Studio Core V1 complete and reviewed.
+Phase 2: Electromagnetic Induction Specification complete and reviewed.
 
 ## Completed
 
@@ -23,6 +23,8 @@ Phase 1: Simulation Studio Core V1 complete and reviewed.
 - Core simulation contract, lifecycle host, deterministic clock, parameter definitions, playback controls, telemetry/equation UI, presentation shell, renderer lifecycle boundary, minimal Three.js adapter, and dependency-free graph foundation completed.
 - Core V1 Implementation Reviewer completed. One LOW reusable ARIA ID issue was fixed during review; no BLOCKER, HIGH, or MEDIUM findings remain open.
 - Core V1 Architecture Reviewer subagent completed. One MEDIUM capability-contract issue was fixed; no BLOCKER or HIGH findings remain open.
+- Electromagnetic Induction specification completed at `src/simulations/electromagnetic-induction/SPEC.md`.
+- Scientific and Architecture Reviewer subagents reviewed the specification. Initial scientific findings were resolved; no BLOCKER, HIGH, or MEDIUM findings remain open.
 
 ## Known Issues
 
@@ -33,4 +35,4 @@ Phase 1: Simulation Studio Core V1 complete and reviewed.
 
 ## Next Milestone
 
-Begin Phase 2: Electromagnetic Induction Specification. Create the simulation specification before implementing the prototype: educational objectives, scientific assumptions, formulas, units, controls, presets, telemetry, graph requirements, acceptance criteria, and review notes.
+Begin Phase 3: Electromagnetic Induction Prototype. Implement the pure scientific model and golden tests first, then wire controller/UI/renderer behavior while preserving the model/controller/renderer/UI boundaries.
