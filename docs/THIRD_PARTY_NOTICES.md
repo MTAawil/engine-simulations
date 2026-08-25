@@ -6,6 +6,7 @@ Initial direct dependencies verified on 2026-08-25:
 | --------------------------- | -------------------------------- | --------------: | ---------- |
 | React                       | UI library                       |          19.2.8 | MIT        |
 | React DOM                   | Browser React renderer           |          19.2.8 | MIT        |
+| Three.js                    | 3D scientific rendering          |         0.185.1 | MIT        |
 | Vite                        | Development/build tooling        |           8.2.2 | MIT        |
 | @vitejs/plugin-react        | Vite React integration           |           6.1.0 | MIT        |
 | TypeScript                  | Type checking                    |           6.0.3 | Apache-2.0 |
@@ -19,6 +20,7 @@ Initial direct dependencies verified on 2026-08-25:
 | @testing-library/react      | React component tests            |          16.3.2 | MIT        |
 | @testing-library/jest-dom   | DOM test matchers                |           7.0.1 | MIT        |
 | @testing-library/user-event | DOM interaction test helpers     |          14.6.6 | MIT        |
+| @types/three                | Three.js TypeScript types        |         0.185.4 | MIT        |
 | jsdom                       | Test DOM environment             |          30.0.1 | MIT        |
 | @types/node                 | Node.js TypeScript types         |          26.2.0 | MIT        |
 | @types/react                | React TypeScript types           |         19.2.18 | MIT        |
