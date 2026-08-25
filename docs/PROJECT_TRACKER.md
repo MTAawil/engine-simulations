@@ -22,8 +22,9 @@ Review values:
 Update rule:
 
 - Mark a task `DONE` only after the requested work and relevant QA pass.
-- Mark a task `REVIEWED` only after the relevant reviewer/playbook check has happened.
+- Mark a task `REVIEWED` only after the relevant expert reviewer role has followed its playbook.
 - For milestone reviews, store the review under `docs/reviews/` and reference it here.
+- Review at the end of each phase or meaningful milestone by default; run earlier focused reviews for high-risk scientific, dependency, accessibility, renderer lifecycle, or release-readiness work.
 - Update `docs/CURRENT_STATUS.md` after major epic or milestone changes.
 
 ## Epic Summary
