@@ -36,3 +36,4 @@ Scientific model code must be testable without a renderer. Renderer code receive
 - `SimulationHost<TState, TParameters>` owns lifecycle state, initialization errors, abort cleanup, and safe delegation to the simulation contract.
 - `SimulationClock` in `src/core/timing/clock.ts` separates real elapsed time from simulation time, supports play/pause/reset/manual step, and applies speed multipliers only when advancing during playback.
 - Parameter definitions in `src/core/parameters/definitions.ts` capture number, boolean, and choice controls with explicit labels, units where needed, defaults, and validation bounds.
+- `PlaybackControls` in `src/ui/controls/PlaybackControls.tsx` provides coarse React controls for play, pause, reset, deterministic step, and speed selection without subscribing to frame-rate simulation state.

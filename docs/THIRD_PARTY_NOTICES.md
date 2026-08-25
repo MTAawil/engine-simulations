@@ -18,6 +18,7 @@ Initial direct dependencies verified on 2026-08-25:
 | typescript-eslint           | TypeScript ESLint integration    |          8.68.0 | MIT        |
 | @testing-library/react      | React component tests            |          16.3.2 | MIT        |
 | @testing-library/jest-dom   | DOM test matchers                |           7.0.1 | MIT        |
+| @testing-library/user-event | DOM interaction test helpers     |          14.6.6 | MIT        |
 | jsdom                       | Test DOM environment             |          30.0.1 | MIT        |
 | @types/node                 | Node.js TypeScript types         |          26.2.0 | MIT        |
 | @types/react                | React TypeScript types           |         19.2.18 | MIT        |
