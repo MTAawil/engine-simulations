@@ -275,8 +275,8 @@ export function ElectromagneticInductionPrototype() {
           subtitle="Rotating coil, magnetic flux, induced EMF, and Lenz direction"
           isPresentationMode
           stage={<ElectromagneticInductionSceneView state={state} />}
-          controls={
-            <div className="presentation-control-strip">
+          supportingPanel={
+            <div className="presentation-side-panel">
               <button
                 className="presentation-exit-button"
                 type="button"
@@ -288,9 +288,9 @@ export function ElectromagneticInductionPrototype() {
               </button>
               {playbackControls}
               {graphPanel}
+              <TelemetryPanel title="Live readings" data={telemetry} />
             </div>
           }
-          supportingPanel={<TelemetryPanel title="Live readings" data={telemetry} />}
           showSupportingPanelInPresentation
         />
       </div>

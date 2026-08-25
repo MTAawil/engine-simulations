@@ -81,6 +81,17 @@ export function ElectromagneticInductionSceneView({
   return (
     <div className="induction-scene" aria-label="Electromagnetic induction 3D scene">
       <div ref={containerRef} className="induction-scene__canvas" />
+      <ul className="induction-scene__labels" aria-label="Scene orientation labels">
+        <li className="induction-scene__label induction-scene__label--field">
+          B field: +z
+        </li>
+        <li className="induction-scene__label induction-scene__label--normal">
+          Coil normal: +n
+        </li>
+        <li className="induction-scene__label induction-scene__label--current">
+          Positive current
+        </li>
+      </ul>
       {isAvailable ? null : (
         <p className="induction-scene__fallback">
           3D scene preview requires WebGL in the browser.

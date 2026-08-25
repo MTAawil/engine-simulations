@@ -39,6 +39,9 @@ describe("ElectromagneticInductionSceneView", () => {
     expect(
       screen.getByLabelText("Electromagnetic induction 3D scene"),
     ).toBeInTheDocument();
+    expect(screen.getByText("B field: +z")).toBeInTheDocument();
+    expect(screen.getByText("Coil normal: +n")).toBeInTheDocument();
+    expect(screen.getByText("Positive current")).toBeInTheDocument();
   });
 
   it("updates the existing renderer when model state changes", () => {
