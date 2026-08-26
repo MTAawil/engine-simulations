@@ -13,6 +13,7 @@ describe("MeiosisPrototype", () => {
     expect(screen.getByRole("img", { name: /interphase/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Next" })).toBeInTheDocument();
     expect(screen.getByLabelText("Metaphase I orientation")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Present" })).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: "Meiosis readings" }),
     ).toBeInTheDocument();
@@ -101,5 +102,32 @@ describe("MeiosisPrototype", () => {
       }),
     ).toBeInTheDocument();
     expect(screen.getByText("Complete")).toBeInTheDocument();
+  });
+
+  it("toggles a focused presentation layout", async () => {
+    const user = userEvent.setup();
+    render(<MeiosisPrototype />);
+
+    await user.click(screen.getByRole("button", { name: "Present" }));
+
+    expect(
+      screen.getByRole("region", { name: "Meiosis prototype stage" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Exit presentation" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "03: Metaphase I" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Meiosis readings" }),
+    ).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Next" }));
+
+    expect(screen.getByRole("heading", { name: "Prophase I" })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "Exit presentation" }));
+
+    expect(screen.getByRole("button", { name: "Present" })).toBeInTheDocument();
+    expect(screen.getByLabelText("Metaphase I orientation")).toBeInTheDocument();
   });
 });

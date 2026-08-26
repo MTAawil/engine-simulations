@@ -48,6 +48,7 @@ Meiosis Prototype specification started after owner redirected work beyond Proto
 - Meiosis Implementation Reviewer completed; findings were fixed and re-reviewed in `docs/reviews/meiosis-implementation-review.md`.
 - Meiosis Visual / UX Reviewer completed; laptop layout and timeline accessibility findings were fixed and re-reviewed in `docs/reviews/meiosis-visual-ux-review.md`.
 - Meiosis Architecture Reviewer completed for the current scope; one LOW future-risk note was accepted in `docs/reviews/meiosis-architecture-review.md`.
+- Meiosis laptop-first presentation mode added using the shared `PresentationShell`.
 
 ## Known Issues
 
@@ -60,4 +61,4 @@ Meiosis Prototype specification started after owner redirected work beyond Proto
 
 ## Next Milestone
 
-Implement Meiosis presentation mode and app-level access polish.
+Verify Meiosis cleanup/lifecycle needs, then run Meiosis milestone reviewers sequentially.

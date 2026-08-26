@@ -24,7 +24,9 @@ Update rule:
 - Mark a task `DONE` only after the requested work and relevant QA pass.
 - Mark a task `REVIEWED` only after the relevant expert reviewer agent has loaded its required skill and followed its playbook.
 - For milestone reviews, store the review under `docs/reviews/` and reference it here.
-- Review at the end of each phase or meaningful milestone by default; run earlier focused reviews for high-risk scientific, dependency, accessibility, renderer lifecycle, or release-readiness work.
+- Review at the end of each phase or meaningful milestone by default; do not run expert reviewer agents after every small task.
+- Run reviewer agents sequentially with focused prompts and exact file lists. Time-box stalled reviewer runs and retry with narrower scope when useful.
+- Run earlier focused reviews only for high-risk scientific, dependency, accessibility, renderer lifecycle, or release-readiness work.
 - Update `docs/CURRENT_STATUS.md` after major epic or milestone changes.
 
 ## Epic Summary
@@ -115,6 +117,6 @@ Update rule:
 | SS-505 | Add Meiosis scientific tests              | REVIEWED | REVIEWED     | Scientific and Implementation reviews completed after targeted regression tests passed.                                                |
 | SS-506 | Implement Meiosis visual stage renderer   | REVIEWED | REVIEWED     | Scientific, Implementation, Visual/UX, and Architecture reviews completed after renderer, orientation, and layout fixes.               |
 | SS-507 | Implement Meiosis controls and telemetry  | REVIEWED | REVIEWED     | Scientific, Implementation, Visual/UX, and Architecture reviews completed after orientation lock, narration, and timeline label fixes. |
-| SS-508 | Implement Meiosis presentation mode       | TODO     | PENDING      | Laptop-first presentation layout; mobile remains postponed.                                                                            |
+| SS-508 | Implement Meiosis presentation mode       | DONE     | PENDING      | Laptop-first presentation layout implemented with shared `PresentationShell`; review will run at milestone gate unless risk rises.     |
 | SS-509 | Verify Meiosis resource cleanup           | TODO     | PENDING      | Renderer or animation-loop cleanup tests as applicable.                                                                                |
 | SS-510 | Run Meiosis prototype milestone reviewers | TODO     | PENDING      | Scientific, Visual / UX, and Release QA reviewers at milestone end or earlier if risk rises.                                           |

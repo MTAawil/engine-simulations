@@ -293,6 +293,101 @@
   padding-top: calc(clamp(24px, 3vw, 44px) + 46px);
 }
 
+.meiosis-prototype--presenting {
+  display: block;
+}
+
+.meiosis-prototype--presenting .presentation-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.meiosis-prototype--presenting .presentation-shell__workspace {
+  grid-template-columns: minmax(0, 780px) minmax(300px, 360px);
+  gap: 16px;
+}
+
+.meiosis-prototype--presenting .presentation-shell__stage {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.meiosis-presentation-stage {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  gap: 10px;
+  padding: 10px;
+}
+
+.meiosis-prototype--presenting .meiosis-stage-view {
+  gap: 10px;
+  min-height: 0;
+  padding: 12px;
+}
+
+.meiosis-prototype--presenting .meiosis-stage-view__header {
+  gap: 6px;
+}
+
+.meiosis-prototype--presenting .meiosis-stage-view__header h2 {
+  font-size: 1.2rem;
+}
+
+.meiosis-prototype--presenting .meiosis-stage-view__counts {
+  gap: 6px;
+}
+
+.meiosis-prototype--presenting .meiosis-stage-view__counts div {
+  padding: 6px;
+}
+
+.meiosis-prototype--presenting .meiosis-cell {
+  min-height: 150px;
+}
+
+.meiosis-prototype--presenting .meiosis-cell--telophaseII,
+.meiosis-prototype--presenting .meiosis-cell--gametesComplete {
+  min-height: 112px;
+}
+
+.meiosis-prototype--presenting .meiosis-cell__chromosomes {
+  gap: 8px;
+}
+
+.meiosis-prototype--presenting .meiosis-chromosome__body {
+  min-height: 64px;
+}
+
+.meiosis-prototype--presenting .meiosis-chromosome--short .meiosis-chromosome__body {
+  min-height: 46px;
+}
+
+.meiosis-prototype--presenting .meiosis-chromatid {
+  width: 14px;
+  min-height: 60px;
+}
+
+.meiosis-prototype--presenting .meiosis-chromosome--short .meiosis-chromatid {
+  min-height: 42px;
+}
+
+.meiosis-prototype--presenting .meiosis-stage-narration {
+  padding: 8px 10px;
+  font-size: 0.86rem;
+}
+
+.meiosis-prototype--presenting .meiosis-timeline {
+  gap: 6px;
+}
+
+.meiosis-prototype--presenting .meiosis-timeline button {
+  min-height: 44px;
+  padding: 6px;
+  font-size: 0.78rem;
+}
+
 .meiosis-prototype__stage {
   display: grid;
   gap: 18px;
@@ -410,5 +505,9 @@
 
   .meiosis-prototype__stage h1 {
     font-size: 3rem;
+  }
+
+  .meiosis-prototype--presenting .presentation-shell__workspace {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

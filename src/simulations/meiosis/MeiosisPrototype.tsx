@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { PresentationShell } from "../../ui/presentation";
 import { TelemetryPanel, type TelemetryDatum } from "../../ui/telemetry";
 import { MeiosisStageView } from "./MeiosisStageView";
 import {
@@ -50,6 +51,7 @@ export function MeiosisPrototype() {
   const [parameters, setParameters] = useState<MeiosisParameters>(
     defaultMeiosisParameters,
   );
+  const [isPresentationMode, setIsPresentationMode] = useState(false);
 
   const state = useMemo(
     () => calculateMeiosisState(stage, parameters),
@@ -69,6 +71,149 @@ export function MeiosisPrototype() {
     }));
   }
 
+  const stageView = (
+    <>
+      <MeiosisStageView state={state} showLabels={parameters.showLabels} />
+      {parameters.showStageNarration ? (
+        <p className="meiosis-stage-narration">{stageNarration[stage]}</p>
+      ) : null}
+      <StageTimeline currentStage={stage} onSelectStage={setStage} />
+    </>
+  );
+
+  const stageControls = (
+    <section className="control-panel">
+      <h2>Stage controls</h2>
+      <div className="meiosis-control-row">
+        <button
+          disabled={stage === "interphase"}
+          onClick={() => {
+            setStage((currentStage) => getPreviousMeiosisStage(currentStage));
+          }}
+          type="button"
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => {
+            setStage("interphase");
+          }}
+          type="button"
+        >
+          Reset
+        </button>
+        <button
+          disabled={stage === "gametesComplete"}
+          onClick={() => {
+            setStage((currentStage) => getNextMeiosisStage(currentStage));
+          }}
+          type="button"
+        >
+          Next
+        </button>
+      </div>
+
+      <label className="meiosis-select-control">
+        Metaphase I orientation
+        <select
+          aria-describedby={
+            isOrientationLocked ? "meiosis-orientation-lock-note" : undefined
+          }
+          disabled={isOrientationLocked}
+          value={parameters.metaphaseIOrientation}
+          onChange={(event) => {
+            updateParameter(
+              "metaphaseIOrientation",
+              event.target.value as MeiosisParameters["metaphaseIOrientation"],
+            );
+          }}
+        >
+          <option value="orientationA">Orientation A</option>
+          <option value="orientationB">Orientation B</option>
+        </select>
+        {isOrientationLocked ? (
+          <span id="meiosis-orientation-lock-note">
+            Reset or return before Telophase I to change orientation.
+          </span>
+        ) : null}
+      </label>
+
+      <label className="meiosis-toggle-control">
+        <input
+          checked={parameters.crossingOverEnabled}
+          onChange={(event) => {
+            updateParameter("crossingOverEnabled", event.target.checked);
+          }}
+          type="checkbox"
+        />
+        Show crossing over
+      </label>
+
+      <label className="meiosis-toggle-control">
+        <input
+          checked={parameters.showLabels}
+          onChange={(event) => {
+            updateParameter("showLabels", event.target.checked);
+          }}
+          type="checkbox"
+        />
+        Show chromosome labels
+      </label>
+
+      <label className="meiosis-toggle-control">
+        <input
+          checked={parameters.showStageNarration}
+          onChange={(event) => {
+            updateParameter("showStageNarration", event.target.checked);
+          }}
+          type="checkbox"
+        />
+        Show stage narration
+      </label>
+    </section>
+  );
+
+  const presentButton = (
+    <button
+      className="presentation-toggle-button"
+      type="button"
+      onClick={() => {
+        setIsPresentationMode(true);
+      }}
+    >
+      Present
+    </button>
+  );
+
+  if (isPresentationMode) {
+    return (
+      <div className="meiosis-prototype meiosis-prototype--presenting">
+        <PresentationShell
+          title="Meiosis prototype"
+          subtitle="Chromosome pairing, crossing over, reductional division, and haploid products"
+          isPresentationMode
+          stage={<div className="meiosis-presentation-stage">{stageView}</div>}
+          supportingPanel={
+            <div className="presentation-side-panel">
+              <button
+                className="presentation-exit-button"
+                type="button"
+                onClick={() => {
+                  setIsPresentationMode(false);
+                }}
+              >
+                Exit presentation
+              </button>
+              {stageControls}
+              <TelemetryPanel data={telemetry} title="Meiosis readings" />
+            </div>
+          }
+          showSupportingPanelInPresentation
+        />
+      </div>
+    );
+  }
+
   return (
     <main className="meiosis-prototype">
       <section className="meiosis-prototype__stage" aria-label="Meiosis prototype">
@@ -79,104 +224,12 @@ export function MeiosisPrototype() {
           and form four haploid products.
         </p>
 
-        <MeiosisStageView state={state} showLabels={parameters.showLabels} />
-        {parameters.showStageNarration ? (
-          <p className="meiosis-stage-narration">{stageNarration[stage]}</p>
-        ) : null}
-        <StageTimeline currentStage={stage} onSelectStage={setStage} />
+        {stageView}
       </section>
 
       <aside className="prototype-controls" aria-label="Meiosis controls">
-        <section className="control-panel">
-          <h2>Stage controls</h2>
-          <div className="meiosis-control-row">
-            <button
-              disabled={stage === "interphase"}
-              onClick={() => {
-                setStage((currentStage) => getPreviousMeiosisStage(currentStage));
-              }}
-              type="button"
-            >
-              Previous
-            </button>
-            <button
-              onClick={() => {
-                setStage("interphase");
-              }}
-              type="button"
-            >
-              Reset
-            </button>
-            <button
-              disabled={stage === "gametesComplete"}
-              onClick={() => {
-                setStage((currentStage) => getNextMeiosisStage(currentStage));
-              }}
-              type="button"
-            >
-              Next
-            </button>
-          </div>
-
-          <label className="meiosis-select-control">
-            Metaphase I orientation
-            <select
-              aria-describedby={
-                isOrientationLocked ? "meiosis-orientation-lock-note" : undefined
-              }
-              disabled={isOrientationLocked}
-              value={parameters.metaphaseIOrientation}
-              onChange={(event) => {
-                updateParameter(
-                  "metaphaseIOrientation",
-                  event.target.value as MeiosisParameters["metaphaseIOrientation"],
-                );
-              }}
-            >
-              <option value="orientationA">Orientation A</option>
-              <option value="orientationB">Orientation B</option>
-            </select>
-            {isOrientationLocked ? (
-              <span id="meiosis-orientation-lock-note">
-                Reset or return before Telophase I to change orientation.
-              </span>
-            ) : null}
-          </label>
-
-          <label className="meiosis-toggle-control">
-            <input
-              checked={parameters.crossingOverEnabled}
-              onChange={(event) => {
-                updateParameter("crossingOverEnabled", event.target.checked);
-              }}
-              type="checkbox"
-            />
-            Show crossing over
-          </label>
-
-          <label className="meiosis-toggle-control">
-            <input
-              checked={parameters.showLabels}
-              onChange={(event) => {
-                updateParameter("showLabels", event.target.checked);
-              }}
-              type="checkbox"
-            />
-            Show chromosome labels
-          </label>
-
-          <label className="meiosis-toggle-control">
-            <input
-              checked={parameters.showStageNarration}
-              onChange={(event) => {
-                updateParameter("showStageNarration", event.target.checked);
-              }}
-              type="checkbox"
-            />
-            Show stage narration
-          </label>
-        </section>
-
+        {presentButton}
+        {stageControls}
         <TelemetryPanel data={telemetry} title="Meiosis readings" />
       </aside>
     </main>

@@ -20,7 +20,9 @@ Do not declare success if visual quality, scientific certainty, performance, lic
 
 ## Reviewer Standard
 
-Reviews happen at the end of a phase or meaningful milestone by default. Run an earlier focused review when risk is high, such as scientific formulas, licensing, renderer lifecycle, accessibility, or release readiness.
+Reviews happen at the end of a phase or meaningful milestone by default. Do not run expert reviewer agents after every small task. Run an earlier focused review only when risk is high, such as scientific formulas, licensing, renderer lifecycle, accessibility, or release readiness.
+
+Reviewer agents should run sequentially with focused prompts and exact file lists. Time-box stalled reviewer runs, retry with a narrower scope when useful, and store the durable result in `docs/reviews/`, `docs/PROJECT_TRACKER.md`, and `docs/CURRENT_STATUS.md` instead of relying on long-lived agent memory.
 
 Each review must use the matching expert reviewer agent, required project-local skill, and playbook:
 
