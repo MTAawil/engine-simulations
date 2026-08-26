@@ -114,7 +114,7 @@ Update rule:
 | SS-504 | Implement deterministic Meiosis model     | DONE   | PENDING      | Pure TypeScript stage model added with ploidy/chromosome invariants, crossover and orientation rules. |
 | SS-505 | Add Meiosis scientific tests              | DONE   | PENDING      | Golden tests added for stage transitions, counts, crossover, orientation, and boundary behavior.      |
 | SS-506 | Implement Meiosis visual stage renderer   | DONE   | PENDING      | Snapshot-driven chromosome/cell visualization added with non-color-only recombination cues.           |
-| SS-507 | Implement Meiosis controls and telemetry  | TODO   | PENDING      | Stage controls, crossing-over toggle, orientation selector, labels, timeline, and telemetry.          |
+| SS-507 | Implement Meiosis controls and telemetry  | DONE   | PENDING      | Stage controls, crossing-over toggle, orientation selector, labels, timeline, and telemetry added.    |
 | SS-508 | Implement Meiosis presentation mode       | TODO   | PENDING      | Laptop-first presentation layout; mobile remains postponed.                                           |
 | SS-509 | Verify Meiosis resource cleanup           | TODO   | PENDING      | Renderer or animation-loop cleanup tests as applicable.                                               |
 | SS-510 | Run Meiosis prototype milestone reviewers | TODO   | PENDING      | Scientific, Visual / UX, and Release QA reviewers at milestone end or earlier if risk rises.          |

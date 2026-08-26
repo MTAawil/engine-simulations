@@ -1,4 +1,5 @@
 export { MeiosisStageView, type MeiosisStageViewProps } from "./MeiosisStageView";
+export { MeiosisPrototype } from "./MeiosisPrototype";
 export {
   calculateMeiosisState,
   defaultMeiosisParameters,

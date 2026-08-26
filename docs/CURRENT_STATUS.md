@@ -40,8 +40,10 @@ Meiosis Prototype specification started after owner redirected work beyond Proto
 - Owner explicitly redirected work to Meiosis after Prototype A release-candidate preparation.
 - Meiosis draft specification created at `src/simulations/meiosis/SPEC.md`.
 - Meiosis deterministic stage model and scientific tests added under `src/simulations/meiosis/`.
-- Meiosis model and renderer QA passed with `pnpm qa:fast` and `pnpm build`.
+- Meiosis prototype QA passed with `pnpm qa:fast` and `pnpm build`.
 - Meiosis snapshot-driven visual stage renderer added with chromosome/cell rendering tests.
+- Meiosis prototype controls, telemetry, labels toggle, orientation selector, and stage timeline added.
+- App-level simulation switcher added so Prototype A and Meiosis are both reachable.
 
 ## Known Issues
 
@@ -54,4 +56,4 @@ Meiosis Prototype specification started after owner redirected work beyond Proto
 
 ## Next Milestone
 
-Review the Meiosis specification/model/renderer, then implement Meiosis controls, telemetry, stage timeline, and presentation mode.
+Review the Meiosis specification/model/renderer, then implement Meiosis presentation mode and app-level access polish.
