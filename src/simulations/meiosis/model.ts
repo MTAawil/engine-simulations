@@ -86,7 +86,7 @@ export function calculateMeiosisState(
   const stageIndex = getMeiosisStageIndex(stage);
   const stageCounts = calculateStageCounts(stage);
   const cells = createCellsForStage(stage, parameters);
-  const recombinedChromatidCount = parameters.crossingOverEnabled ? 2 : 0;
+  const recombinedChromatidCount = isCrossingOverVisible(stage, parameters) ? 2 : 0;
 
   return {
     stage,
@@ -161,6 +161,14 @@ function calculateStageCounts(stage: MeiosisStage): {
   chromatidCountPerCell: number;
   ploidyLabel: PloidyLabel;
 } {
+  if (stage === "anaphaseII") {
+    return {
+      chromosomeCountPerCell: 4,
+      chromatidCountPerCell: 4,
+      ploidyLabel: "haploid",
+    };
+  }
+
   if (stage === "telophaseII" || stage === "gametesComplete") {
     return {
       chromosomeCountPerCell: 2,
@@ -169,12 +177,7 @@ function calculateStageCounts(stage: MeiosisStage): {
     };
   }
 
-  if (
-    stage === "telophaseI" ||
-    stage === "prophaseII" ||
-    stage === "metaphaseII" ||
-    stage === "anaphaseII"
-  ) {
+  if (stage === "telophaseI" || stage === "prophaseII" || stage === "metaphaseII") {
     return {
       chromosomeCountPerCell: 2,
       chromatidCountPerCell: 4,
@@ -197,12 +200,11 @@ function createCellsForStage(
     return createFinalGameteCells(parameters);
   }
 
-  if (
-    stage === "telophaseI" ||
-    stage === "prophaseII" ||
-    stage === "metaphaseII" ||
-    stage === "anaphaseII"
-  ) {
+  if (stage === "anaphaseII") {
+    return createAnaphaseIIProductCells(parameters);
+  }
+
+  if (stage === "telophaseI" || stage === "prophaseII" || stage === "metaphaseII") {
     return createMeiosisIProductCells(parameters);
   }
 
@@ -210,10 +212,18 @@ function createCellsForStage(
     {
       id: "parent-cell",
       chromosomes: [
-        createReplicatedChromosome("long", "maternal", parameters, true),
-        createReplicatedChromosome("long", "paternal", parameters, true),
-        createReplicatedChromosome("short", "maternal", parameters, false),
-        createReplicatedChromosome("short", "paternal", parameters, false),
+        createReplicatedChromosome(
+          "long",
+          "maternal",
+          isCrossingOverVisible(stage, parameters),
+        ),
+        createReplicatedChromosome(
+          "long",
+          "paternal",
+          isCrossingOverVisible(stage, parameters),
+        ),
+        createReplicatedChromosome("short", "maternal", false),
+        createReplicatedChromosome("short", "paternal", false),
       ],
     },
   ];
@@ -230,16 +240,36 @@ function createMeiosisIProductCells(
     {
       id: "meiosis-i-product-a",
       chromosomes: firstProduct.map(({ pairId, origin }) =>
-        createReplicatedChromosome(pairId, origin, parameters, pairId === "long"),
+        createReplicatedChromosome(
+          pairId,
+          origin,
+          parameters.crossingOverEnabled && pairId === "long",
+        ),
       ),
     },
     {
       id: "meiosis-i-product-b",
       chromosomes: secondProduct.map(({ pairId, origin }) =>
-        createReplicatedChromosome(pairId, origin, parameters, pairId === "long"),
+        createReplicatedChromosome(
+          pairId,
+          origin,
+          parameters.crossingOverEnabled && pairId === "long",
+        ),
       ),
     },
   ];
+}
+
+function createAnaphaseIIProductCells(
+  parameters: MeiosisParameters,
+): readonly MeiosisCell[] {
+  return createMeiosisIProductCells(parameters).map((cell) => ({
+    id: `${cell.id}-anaphase-ii`,
+    chromosomes: cell.chromosomes.flatMap((chromosome) => [
+      createUnreplicatedChromosome(chromosome, 0),
+      createUnreplicatedChromosome(chromosome, 1),
+    ]),
+  }));
 }
 
 function createFinalGameteCells(parameters: MeiosisParameters): readonly MeiosisCell[] {
@@ -293,7 +323,6 @@ function getMeiosisIProductOrigins(
 function createReplicatedChromosome(
   pairId: ChromosomePairId,
   origin: HomologOrigin,
-  parameters: MeiosisParameters,
   includeRecombinedChromatid: boolean,
 ): MeiosisChromosome {
   return {
@@ -305,10 +334,7 @@ function createReplicatedChromosome(
       createChromatid({
         chromatidIndex,
         includeRecombinedSegment:
-          parameters.crossingOverEnabled &&
-          pairId === "long" &&
-          includeRecombinedChromatid &&
-          chromatidIndex === 0,
+          pairId === "long" && includeRecombinedChromatid && chromatidIndex === 0,
         origin,
         pairId,
       }),
@@ -356,6 +382,13 @@ function createChromatid({
     ],
     recombined: distalOrigin !== origin,
   };
+}
+
+function isCrossingOverVisible(
+  stage: MeiosisStage,
+  parameters: MeiosisParameters,
+): boolean {
+  return parameters.crossingOverEnabled && getMeiosisStageIndex(stage) >= 1;
 }
 
 function oppositeOrigin(origin: HomologOrigin): HomologOrigin {

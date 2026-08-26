@@ -44,6 +44,10 @@ Meiosis Prototype specification started after owner redirected work beyond Proto
 - Meiosis snapshot-driven visual stage renderer added with chromosome/cell rendering tests.
 - Meiosis prototype controls, telemetry, labels toggle, orientation selector, and stage timeline added.
 - App-level simulation switcher added so Prototype A and Meiosis are both reachable.
+- Meiosis Scientific Reviewer completed; findings were fixed and re-reviewed in `docs/reviews/meiosis-scientific-review.md`.
+- Meiosis Implementation Reviewer completed; findings were fixed and re-reviewed in `docs/reviews/meiosis-implementation-review.md`.
+- Meiosis Visual / UX Reviewer completed; laptop layout and timeline accessibility findings were fixed and re-reviewed in `docs/reviews/meiosis-visual-ux-review.md`.
+- Meiosis Architecture Reviewer completed for the current scope; one LOW future-risk note was accepted in `docs/reviews/meiosis-architecture-review.md`.
 
 ## Known Issues
 
@@ -56,4 +60,4 @@ Meiosis Prototype specification started after owner redirected work beyond Proto
 
 ## Next Milestone
 
-Review the Meiosis specification/model/renderer, then implement Meiosis presentation mode and app-level access polish.
+Implement Meiosis presentation mode and app-level access polish.

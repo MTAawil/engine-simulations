@@ -26,6 +26,25 @@ const stageLabels = {
   gametesComplete: "Gametes complete",
 } as const satisfies Record<MeiosisStage, string>;
 
+const stageNarration = {
+  interphase:
+    "DNA has replicated; homologous chromosomes are still in one diploid parent cell.",
+  prophaseI:
+    "Homologs pair into tetrads, and crossing over can exchange matching segments between non-sister chromatids.",
+  metaphaseI:
+    "Tetrads align at the equator; the selected orientation sets which homologs travel together.",
+  anaphaseI: "Homologous chromosomes separate while sister chromatids remain attached.",
+  telophaseI:
+    "Two haploid cells exist, but each chromosome is still made of sister chromatids.",
+  prophaseII:
+    "The two haploid cells prepare for a second division without new DNA replication.",
+  metaphaseII: "Chromosomes align individually so sister chromatids can separate.",
+  anaphaseII: "Sister chromatids separate and become individual chromosome bodies.",
+  telophaseII: "Four haploid products form as the second division finishes.",
+  gametesComplete:
+    "Each final product has one chromosome from each homologous pair, with recombined segments when crossing over was visible.",
+} as const satisfies Record<MeiosisStage, string>;
+
 export function MeiosisPrototype() {
   const [stage, setStage] = useState<MeiosisStage>("interphase");
   const [parameters, setParameters] = useState<MeiosisParameters>(
@@ -37,6 +56,8 @@ export function MeiosisPrototype() {
     [parameters, stage],
   );
   const telemetry = useMemo(() => createMeiosisTelemetry(state), [state]);
+  const isOrientationLocked =
+    getMeiosisStageIndex(stage) >= getMeiosisStageIndex("telophaseI");
 
   function updateParameter<TKey extends keyof MeiosisParameters>(
     key: TKey,
@@ -59,6 +80,9 @@ export function MeiosisPrototype() {
         </p>
 
         <MeiosisStageView state={state} showLabels={parameters.showLabels} />
+        {parameters.showStageNarration ? (
+          <p className="meiosis-stage-narration">{stageNarration[stage]}</p>
+        ) : null}
         <StageTimeline currentStage={stage} onSelectStage={setStage} />
       </section>
 
@@ -97,6 +121,10 @@ export function MeiosisPrototype() {
           <label className="meiosis-select-control">
             Metaphase I orientation
             <select
+              aria-describedby={
+                isOrientationLocked ? "meiosis-orientation-lock-note" : undefined
+              }
+              disabled={isOrientationLocked}
               value={parameters.metaphaseIOrientation}
               onChange={(event) => {
                 updateParameter(
@@ -108,6 +136,11 @@ export function MeiosisPrototype() {
               <option value="orientationA">Orientation A</option>
               <option value="orientationB">Orientation B</option>
             </select>
+            {isOrientationLocked ? (
+              <span id="meiosis-orientation-lock-note">
+                Reset or return before Telophase I to change orientation.
+              </span>
+            ) : null}
           </label>
 
           <label className="meiosis-toggle-control">
@@ -131,6 +164,17 @@ export function MeiosisPrototype() {
             />
             Show chromosome labels
           </label>
+
+          <label className="meiosis-toggle-control">
+            <input
+              checked={parameters.showStageNarration}
+              onChange={(event) => {
+                updateParameter("showStageNarration", event.target.checked);
+              }}
+              type="checkbox"
+            />
+            Show stage narration
+          </label>
         </section>
 
         <TelemetryPanel data={telemetry} title="Meiosis readings" />
@@ -150,6 +194,10 @@ function StageTimeline({
     <nav aria-label="Meiosis stage timeline" className="meiosis-timeline">
       {meiosisStages.map((stage) => (
         <button
+          aria-label={`${String(getMeiosisStageIndex(stage) + 1).padStart(
+            2,
+            "0",
+          )}: ${stageLabels[stage]}`}
           aria-current={stage === currentStage ? "step" : undefined}
           className={stage === currentStage ? "is-current" : undefined}
           key={stage}

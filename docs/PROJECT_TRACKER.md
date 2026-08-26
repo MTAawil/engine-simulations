@@ -29,14 +29,14 @@ Update rule:
 
 ## Epic Summary
 
-| Epic    | Name                                    | Status      | Review   | Notes                                                                                                               |
-| ------- | --------------------------------------- | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| EPIC-00 | Repository Foundation                   | REVIEWED    | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`.              |
-| EPIC-01 | Simulation Studio Core V1               | REVIEWED    | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                              |
-| EPIC-02 | Electromagnetic Induction Specification | REVIEWED    | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.                     |
-| EPIC-03 | Electromagnetic Induction Prototype     | REVIEWED    | REVIEWED | Prototype complete and reviewed by Scientific, Visual/UX, and Release QA reviewers.                                 |
-| EPIC-04 | Prototype A Release Candidate           | REVIEWED    | REVIEWED | Release-candidate package reviewed; owner testing guide, screenshots, QA gate, status, and recommendation prepared. |
-| EPIC-05 | Meiosis Prototype                       | IN_PROGRESS | PENDING  | Owner explicitly redirected work to Meiosis; specification created first before implementation.                     |
+| Epic    | Name                                    | Status      | Review   | Notes                                                                                                                                             |
+| ------- | --------------------------------------- | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| EPIC-00 | Repository Foundation                   | REVIEWED    | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`.                                            |
+| EPIC-01 | Simulation Studio Core V1               | REVIEWED    | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                                                            |
+| EPIC-02 | Electromagnetic Induction Specification | REVIEWED    | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.                                                   |
+| EPIC-03 | Electromagnetic Induction Prototype     | REVIEWED    | REVIEWED | Prototype complete and reviewed by Scientific, Visual/UX, and Release QA reviewers.                                                               |
+| EPIC-04 | Prototype A Release Candidate           | REVIEWED    | REVIEWED | Release-candidate package reviewed; owner testing guide, screenshots, QA gate, status, and recommendation prepared.                               |
+| EPIC-05 | Meiosis Prototype                       | IN_PROGRESS | PENDING  | Specification/model/renderer/controls reviewed by Scientific, Implementation, Visual/UX, and Architecture agents; presentation mode remains next. |
 
 ## EPIC-00: Repository Foundation
 
@@ -106,15 +106,15 @@ Update rule:
 
 ## EPIC-05: Meiosis Prototype
 
-| Task   | Title                                     | Status | Review       | Notes                                                                                                 |
-| ------ | ----------------------------------------- | ------ | ------------ | ----------------------------------------------------------------------------------------------------- |
-| SS-501 | Receive redirect after Prototype A        | DONE   | NOT_REQUIRED | Owner explicitly redirected work to Meiosis after Prototype A release-candidate preparation.          |
-| SS-502 | Create Meiosis specification              | DONE   | PENDING      | Draft specification added in `src/simulations/meiosis/SPEC.md`; pending scientific review.            |
-| SS-503 | Review Meiosis specification              | TODO   | PENDING      | Scientific Reviewer first, Architecture Reviewer if scope or boundaries change materially.            |
-| SS-504 | Implement deterministic Meiosis model     | DONE   | PENDING      | Pure TypeScript stage model added with ploidy/chromosome invariants, crossover and orientation rules. |
-| SS-505 | Add Meiosis scientific tests              | DONE   | PENDING      | Golden tests added for stage transitions, counts, crossover, orientation, and boundary behavior.      |
-| SS-506 | Implement Meiosis visual stage renderer   | DONE   | PENDING      | Snapshot-driven chromosome/cell visualization added with non-color-only recombination cues.           |
-| SS-507 | Implement Meiosis controls and telemetry  | DONE   | PENDING      | Stage controls, crossing-over toggle, orientation selector, labels, timeline, and telemetry added.    |
-| SS-508 | Implement Meiosis presentation mode       | TODO   | PENDING      | Laptop-first presentation layout; mobile remains postponed.                                           |
-| SS-509 | Verify Meiosis resource cleanup           | TODO   | PENDING      | Renderer or animation-loop cleanup tests as applicable.                                               |
-| SS-510 | Run Meiosis prototype milestone reviewers | TODO   | PENDING      | Scientific, Visual / UX, and Release QA reviewers at milestone end or earlier if risk rises.          |
+| Task   | Title                                     | Status   | Review       | Notes                                                                                                                                  |
+| ------ | ----------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| SS-501 | Receive redirect after Prototype A        | DONE     | NOT_REQUIRED | Owner explicitly redirected work to Meiosis after Prototype A release-candidate preparation.                                           |
+| SS-502 | Create Meiosis specification              | REVIEWED | REVIEWED     | Scientifically reviewed in `docs/reviews/meiosis-scientific-review.md`.                                                                |
+| SS-503 | Review Meiosis specification              | REVIEWED | REVIEWED     | Scientific, Implementation, Visual/UX, and Architecture reviews completed for current scope.                                           |
+| SS-504 | Implement deterministic Meiosis model     | REVIEWED | REVIEWED     | Scientific, Implementation, and Architecture reviews completed after recombination timing and Anaphase II fixes.                       |
+| SS-505 | Add Meiosis scientific tests              | REVIEWED | REVIEWED     | Scientific and Implementation reviews completed after targeted regression tests passed.                                                |
+| SS-506 | Implement Meiosis visual stage renderer   | REVIEWED | REVIEWED     | Scientific, Implementation, Visual/UX, and Architecture reviews completed after renderer, orientation, and layout fixes.               |
+| SS-507 | Implement Meiosis controls and telemetry  | REVIEWED | REVIEWED     | Scientific, Implementation, Visual/UX, and Architecture reviews completed after orientation lock, narration, and timeline label fixes. |
+| SS-508 | Implement Meiosis presentation mode       | TODO     | PENDING      | Laptop-first presentation layout; mobile remains postponed.                                                                            |
+| SS-509 | Verify Meiosis resource cleanup           | TODO     | PENDING      | Renderer or animation-loop cleanup tests as applicable.                                                                                |
+| SS-510 | Run Meiosis prototype milestone reviewers | TODO     | PENDING      | Scientific, Visual / UX, and Release QA reviewers at milestone end or earlier if risk rises.                                           |

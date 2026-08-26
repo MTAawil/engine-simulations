@@ -80,6 +80,7 @@ export function MeiosisStageView({ state, showLabels = true }: MeiosisStageViewP
             cell={cell}
             index={index}
             key={cell.id}
+            metaphaseIOrientation={state.metaphaseIOrientation}
             showLabels={showLabels}
             stage={state.stage}
           />
@@ -100,11 +101,13 @@ export function MeiosisStageView({ state, showLabels = true }: MeiosisStageViewP
 function CellView({
   cell,
   index,
+  metaphaseIOrientation,
   showLabels,
   stage,
 }: {
   cell: MeiosisCell;
   index: number;
+  metaphaseIOrientation: MeiosisState["metaphaseIOrientation"];
   showLabels: boolean;
   stage: MeiosisStage;
 }) {
@@ -124,7 +127,9 @@ function CellView({
           <ChromosomeView
             chromosome={chromosome}
             key={chromosome.id}
+            metaphaseIOrientation={metaphaseIOrientation}
             showLabels={showLabels}
+            stage={stage}
           />
         ))}
       </div>
@@ -134,21 +139,30 @@ function CellView({
 
 function ChromosomeView({
   chromosome,
+  metaphaseIOrientation,
   showLabels,
+  stage,
 }: {
   chromosome: MeiosisChromosome;
+  metaphaseIOrientation: MeiosisState["metaphaseIOrientation"];
   showLabels: boolean;
+  stage: MeiosisStage;
 }) {
   const chromosomeLabel = `${pairLabels[chromosome.pairId]} ${
     originLabels[chromosome.origin]
   }`;
+  const arrangementClassName = getChromosomeArrangementClassName(
+    chromosome,
+    stage,
+    metaphaseIOrientation,
+  );
 
   return (
     <div
       aria-label={`${chromosomeLabel} chromosome${
         chromosome.replicated ? " with sister chromatids" : ""
       }`}
-      className={`meiosis-chromosome meiosis-chromosome--${chromosome.pairId} meiosis-chromosome--${chromosome.origin}`}
+      className={`meiosis-chromosome meiosis-chromosome--${chromosome.pairId} meiosis-chromosome--${chromosome.origin} ${arrangementClassName}`}
     >
       <div className="meiosis-chromosome__body">
         {chromosome.chromatids.map((chromatid) => (
@@ -181,6 +195,55 @@ function ChromatidView({ chromatid }: { chromatid: MeiosisChromatid }) {
       ) : null}
     </div>
   );
+}
+
+function getChromosomeArrangementClassName(
+  chromosome: MeiosisChromosome,
+  stage: MeiosisStage,
+  metaphaseIOrientation: MeiosisState["metaphaseIOrientation"],
+) {
+  if (stage === "prophaseI") {
+    return `meiosis-chromosome--tetrad meiosis-chromosome--tetrad-${chromosome.pairId}`;
+  }
+
+  if (stage === "metaphaseI") {
+    return `meiosis-chromosome--metaphase-i meiosis-chromosome--metaphase-i-${getMeiosisISide(
+      chromosome,
+      metaphaseIOrientation,
+    )}`;
+  }
+
+  if (stage === "anaphaseI") {
+    return `meiosis-chromosome--anaphase-i meiosis-chromosome--anaphase-i-${getMeiosisISide(
+      chromosome,
+      metaphaseIOrientation,
+    )}`;
+  }
+
+  if (stage === "metaphaseII") {
+    return "meiosis-chromosome--metaphase-ii";
+  }
+
+  if (stage === "anaphaseII") {
+    return `meiosis-chromosome--anaphase-ii meiosis-chromosome--anaphase-ii-${chromosome.id.endsWith("-single-0") ? "left" : "right"}`;
+  }
+
+  return "";
+}
+
+function getMeiosisISide(
+  chromosome: MeiosisChromosome,
+  metaphaseIOrientation: MeiosisState["metaphaseIOrientation"],
+) {
+  if (metaphaseIOrientation === "orientationA") {
+    return chromosome.origin === "maternal" ? "left" : "right";
+  }
+
+  if (chromosome.pairId === "long") {
+    return chromosome.origin === "maternal" ? "left" : "right";
+  }
+
+  return chromosome.origin === "paternal" ? "left" : "right";
 }
 
 function formatPloidy(ploidyLabel: MeiosisState["ploidyLabel"]) {

@@ -49,6 +49,21 @@ describe("MeiosisPrototype", () => {
     expect(screen.queryByText("recombined")).not.toBeInTheDocument();
   });
 
+  it("toggles stage narration", async () => {
+    const user = userEvent.setup();
+    render(<MeiosisPrototype />);
+
+    expect(
+      screen.getByText(/DNA has replicated; homologous chromosomes/i),
+    ).toBeInTheDocument();
+
+    await user.click(screen.getByLabelText("Show stage narration"));
+
+    expect(
+      screen.queryByText(/DNA has replicated; homologous chromosomes/i),
+    ).not.toBeInTheDocument();
+  });
+
   it("changes orientation from the control panel", async () => {
     const user = userEvent.setup();
     render(<MeiosisPrototype />);
@@ -58,6 +73,20 @@ describe("MeiosisPrototype", () => {
     ]);
 
     expect(screen.getAllByText("Orientation B").length).toBeGreaterThan(1);
+  });
+
+  it("locks orientation after Meiosis I products exist", async () => {
+    const user = userEvent.setup();
+    render(<MeiosisPrototype />);
+
+    await user.click(screen.getByRole("button", { name: "05: Telophase I" }));
+
+    expect(
+      screen.getByRole("combobox", { name: /Metaphase I orientation/i }),
+    ).toBeDisabled();
+    expect(
+      screen.getByText("Reset or return before Telophase I to change orientation."),
+    ).toBeInTheDocument();
   });
 
   it("can jump directly from the timeline", async () => {

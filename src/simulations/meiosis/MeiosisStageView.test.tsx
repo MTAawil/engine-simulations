@@ -65,6 +65,77 @@ describe("MeiosisStageView", () => {
     expect(screen.getAllByText("recombined")).toHaveLength(2);
   });
 
+  it("does not render recombination markers during Interphase", () => {
+    render(
+      <MeiosisStageView
+        state={calculateMeiosisState("interphase", {
+          ...defaultMeiosisParameters,
+          crossingOverEnabled: true,
+        })}
+      />,
+    );
+
+    expect(
+      screen.getByText("0 chromatids carry exchanged segments."),
+    ).toBeInTheDocument();
+    expect(screen.queryByText("recombined")).not.toBeInTheDocument();
+  });
+
+  it("uses stage-specific chromosome arrangement classes", () => {
+    const { container } = render(
+      <MeiosisStageView
+        state={calculateMeiosisState("anaphaseI", defaultMeiosisParameters)}
+      />,
+    );
+
+    expect(
+      container.querySelector(".meiosis-chromosome--anaphase-i-left"),
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector(".meiosis-chromosome--anaphase-i-right"),
+    ).toBeInTheDocument();
+  });
+
+  it("reflects Metaphase I orientation in Anaphase I movement classes", () => {
+    const { container } = render(
+      <MeiosisStageView
+        state={calculateMeiosisState("anaphaseI", {
+          ...defaultMeiosisParameters,
+          metaphaseIOrientation: "orientationB",
+        })}
+      />,
+    );
+
+    expect(
+      container.querySelector(
+        ".meiosis-chromosome--long.meiosis-chromosome--maternal.meiosis-chromosome--anaphase-i-left",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector(
+        ".meiosis-chromosome--short.meiosis-chromosome--paternal.meiosis-chromosome--anaphase-i-left",
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("shows separated chromosome bodies at Anaphase II", () => {
+    const { container } = render(
+      <MeiosisStageView
+        state={calculateMeiosisState("anaphaseII", defaultMeiosisParameters)}
+      />,
+    );
+
+    expect(screen.getByText("haploid")).toBeInTheDocument();
+    expect(screen.getAllByLabelText(/cell \d with 4 chromosomes/i)).toHaveLength(2);
+    expect(screen.queryByLabelText(/with sister chromatids/i)).not.toBeInTheDocument();
+    expect(
+      container.querySelector(".meiosis-chromosome--anaphase-ii-left"),
+    ).toBeInTheDocument();
+    expect(
+      container.querySelector(".meiosis-chromosome--anaphase-ii-right"),
+    ).toBeInTheDocument();
+  });
+
   it("can hide chromosome labels without removing accessible names", () => {
     render(
       <MeiosisStageView

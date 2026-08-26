@@ -49,6 +49,18 @@ describe("meiosis model", () => {
     expect(state.cells[0]?.chromosomes).toHaveLength(4);
   });
 
+  it("does not show recombination before Prophase I", () => {
+    const state = calculate("interphase", { crossingOverEnabled: true });
+    const recombinedChromatids = state.cells.flatMap((cell) =>
+      cell.chromosomes.flatMap((chromosome) =>
+        chromosome.chromatids.filter((chromatid) => chromatid.recombined),
+      ),
+    );
+
+    expect(state.recombinedChromatidCount).toBe(0);
+    expect(recombinedChromatids).toHaveLength(0);
+  });
+
   it("steps forward and backward through the fixed stage list", () => {
     expect(getNextMeiosisStage("interphase")).toBe("prophaseI");
     expect(getPreviousMeiosisStage("prophaseI")).toBe("interphase");
@@ -123,6 +135,33 @@ describe("meiosis model", () => {
     ).toBe(true);
   });
 
+  it("represents separated sister chromatids during Anaphase II", () => {
+    const state = calculate("anaphaseII");
+
+    expect(state.divisionLabel).toBe("meiosisII");
+    expect(state.daughterCellCount).toBe(2);
+    expect(state.chromosomeCountPerCell).toBe(4);
+    expect(state.chromatidCountPerCell).toBe(4);
+    expect(state.ploidyLabel).toBe("haploid");
+    expect(
+      state.cells.every((cell) =>
+        cell.chromosomes.every((chromosome) => !chromosome.replicated),
+      ),
+    ).toBe(true);
+  });
+
+  it("carries recombined chromatids into final products after crossing over", () => {
+    const state = calculate("gametesComplete", { crossingOverEnabled: true });
+    const recombinedChromatids = state.cells.flatMap((cell) =>
+      cell.chromosomes.flatMap((chromosome) =>
+        chromosome.chromatids.filter((chromatid) => chromatid.recombined),
+      ),
+    );
+
+    expect(state.recombinedChromatidCount).toBe(2);
+    expect(recombinedChromatids).toHaveLength(2);
+  });
+
   it("changes final homolog combinations from metaphase I orientation", () => {
     expect(
       finalProductSignature({ metaphaseIOrientation: "orientationA" }),
@@ -130,7 +169,7 @@ describe("meiosis model", () => {
   });
 
   it("does not replicate DNA again between meiosis I and meiosis II", () => {
-    for (const stage of ["prophaseII", "metaphaseII", "anaphaseII"] as const) {
+    for (const stage of ["prophaseII", "metaphaseII"] as const) {
       const state = calculate(stage);
 
       expect(state.daughterCellCount).toBe(2);
