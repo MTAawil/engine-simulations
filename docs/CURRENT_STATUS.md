@@ -4,7 +4,7 @@ Date: 2026-08-26
 
 ## Phase
 
-Prototype A release candidate reviewed and ready for owner desktop/laptop testing.
+Meiosis Prototype specification started after owner redirected work beyond Prototype A.
 
 ## Completed
 
@@ -37,6 +37,8 @@ Prototype A release candidate reviewed and ready for owner desktop/laptop testin
 - Browser-assisted checks passed for desktop normal mode and presentation mode.
 - Owner testing guide created at `docs/user-testing/prototype-a-electromagnetic-induction.md`.
 - Release-candidate screenshots captured and refreshed under `docs/screenshots/prototype-a/`.
+- Owner explicitly redirected work to Meiosis after Prototype A release-candidate preparation.
+- Meiosis draft specification created at `src/simulations/meiosis/SPEC.md`.
 
 ## Known Issues
 
@@ -49,4 +51,4 @@ Prototype A release candidate reviewed and ready for owner desktop/laptop testin
 
 ## Next Milestone
 
-Owner should run the Prototype A testing guide and decide whether the desktop/laptop Electromagnetic Induction prototype is approved. Do not start Meiosis until owner approval or explicit redirect.
+Review the Meiosis specification, then implement the deterministic stage model and scientific tests before any renderer or UI work.
