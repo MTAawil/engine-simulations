@@ -1,0 +1,224 @@
+.meiosis-stage-view {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 18px;
+  color: #f6fbfc;
+  background:
+    linear-gradient(135deg, rgba(73, 91, 166, 0.24), transparent 34%),
+    linear-gradient(22deg, rgba(55, 128, 106, 0.18), transparent 46%), #0c1116;
+}
+
+.meiosis-stage-view__header {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.meiosis-stage-view__eyebrow {
+  margin: 0;
+  color: #e9c46a;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.meiosis-stage-view__header h2 {
+  margin: 0;
+}
+
+.meiosis-stage-view__counts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.meiosis-stage-view__counts div {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 10px;
+  background: rgba(5, 9, 12, 0.48);
+}
+
+.meiosis-stage-view__counts dt {
+  color: #b8c7ca;
+  font-size: 0.78rem;
+}
+
+.meiosis-stage-view__counts dd {
+  margin: 2px 0 0;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.meiosis-stage-view__cells {
+  display: grid;
+  grid-template-columns: repeat(var(--cell-columns, 1), minmax(0, 1fr));
+  gap: 14px;
+  min-width: 0;
+}
+
+.meiosis-stage-view__cells[data-cell-count="2"] {
+  --cell-columns: 2;
+}
+
+.meiosis-stage-view__cells[data-cell-count="4"] {
+  --cell-columns: 2;
+}
+
+.meiosis-cell {
+  position: relative;
+  display: grid;
+  min-height: 220px;
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(180, 218, 224, 0.2);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 62%),
+    rgba(11, 18, 22, 0.82);
+}
+
+.meiosis-cell--telophaseII,
+.meiosis-cell--gametesComplete {
+  min-height: 168px;
+}
+
+.meiosis-cell__equator {
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  left: 50%;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.24) 0 8px,
+    transparent 8px 16px
+  );
+}
+
+.meiosis-cell__spindle {
+  position: absolute;
+  top: 50%;
+  width: 32%;
+  height: 1px;
+  background: rgba(136, 201, 190, 0.36);
+}
+
+.meiosis-cell__spindle--left {
+  left: 8%;
+  transform: rotate(18deg);
+}
+
+.meiosis-cell__spindle--right {
+  right: 8%;
+  transform: rotate(-18deg);
+}
+
+.meiosis-cell__chromosomes {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(74px, 1fr));
+  gap: 14px;
+  width: min(82%, 360px);
+}
+
+.meiosis-chromosome {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  min-width: 0;
+}
+
+.meiosis-chromosome__body {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  min-height: 88px;
+}
+
+.meiosis-chromosome--short .meiosis-chromosome__body {
+  min-height: 62px;
+}
+
+.meiosis-chromatid {
+  position: relative;
+  display: grid;
+  width: 18px;
+  min-height: 84px;
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
+
+.meiosis-chromosome--short .meiosis-chromatid {
+  min-height: 58px;
+}
+
+.meiosis-chromatid__segment {
+  display: block;
+  min-height: 0;
+}
+
+.meiosis-chromatid__segment--proximal {
+  border-radius: 999px 999px 4px 4px;
+}
+
+.meiosis-chromatid__segment--distal {
+  border-radius: 4px 4px 999px 999px;
+}
+
+.meiosis-chromatid__segment--maternal {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.2) 0 4px,
+      transparent 4px 8px
+    ),
+    #4f8cff;
+}
+
+.meiosis-chromatid__segment--paternal {
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(10, 16, 20, 0.24) 0 4px,
+      transparent 4px 8px
+    ),
+    #e76f51;
+}
+
+.meiosis-chromatid__badge {
+  position: absolute;
+  right: -30px;
+  bottom: -18px;
+  width: max-content;
+  border-radius: 4px;
+  padding: 2px 5px;
+  color: #061014;
+  background: #e9c46a;
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.meiosis-chromosome__label {
+  color: #dce8ea;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.meiosis-stage-view__caption {
+  color: #c9d7da;
+  font-size: 0.9rem;
+}
