@@ -52,34 +52,34 @@ Avoid full genome-scale inheritance, random recombination maps, nondisjunction, 
 
 ## State Variables
 
-| Variable                   | Meaning                                                        | Unit / Type |
-| -------------------------- | -------------------------------------------------------------- | ----------- |
-| `stage`                    | Current meiosis stage                                          | enum        |
-| `stageIndex`               | Deterministic index into the ordered stage list                | count       |
-| `parentPloidyN`            | Haploid chromosome set count in parent before meiosis          | count       |
-| `chromosomePairCount`      | Number of homologous pairs                                     | count       |
+| Variable                   | Meaning                                                         | Unit / Type |
+| -------------------------- | --------------------------------------------------------------- | ----------- |
+| `stage`                    | Current meiosis stage                                           | enum        |
+| `stageIndex`               | Deterministic index into the ordered stage list                 | count       |
+| `parentPloidyN`            | Haploid chromosome set count in parent before meiosis           | count       |
+| `chromosomePairCount`      | Number of homologous pairs                                      | count       |
 | `chromosomeCountPerCell`   | Number of chromosome bodies in the active cell or daughter cell | count       |
 | `chromatidCountPerCell`    | Number of chromatids in the active cell or daughter cell        | count       |
-| `daughterCellCount`        | Number of visible cells at the current stage                   | count       |
-| `crossingOverEnabled`      | Whether deterministic crossover is visible                     | boolean     |
-| `metaphaseIOrientation`    | Orientation pattern for homolog pairs at metaphase I           | enum        |
-| `recombinedChromatidCount` | Number of chromatids containing exchanged segments             | count       |
-| `ploidyLabel`              | Human-readable state such as diploid or haploid                | text        |
+| `daughterCellCount`        | Number of visible cells at the current stage                    | count       |
+| `crossingOverEnabled`      | Whether deterministic crossover is visible                      | boolean     |
+| `metaphaseIOrientation`    | Orientation pattern for homolog pairs at metaphase I            | enum        |
+| `recombinedChromatidCount` | Number of chromatids containing exchanged segments              | count       |
+| `ploidyLabel`              | Human-readable state such as diploid or haploid                 | text        |
 
 ## Stages
 
-| Stage             | Visual Meaning                                                                 | Biological Invariant                                                                    |
-| ----------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
-| Interphase        | One parent cell with replicated chromosomes shown as sister chromatid pairs     | DNA has replicated; chromosome bodies are duplicated but the cell is still diploid       |
-| Prophase I        | Homologs pair into tetrads; optional crossover segments appear                  | Homologous chromosomes synapse; crossing over can occur between non-sister chromatids    |
-| Metaphase I       | Tetrads align at the cell equator with chosen homolog orientation               | Homolog pairs, not individual sister chromatids, determine first-division segregation    |
-| Anaphase I        | Homologs separate toward opposite poles; sister chromatids stay connected        | Homologous chromosomes separate; sister chromatids remain paired                         |
-| Telophase I       | Two haploid cells are visible, each chromosome still has sister chromatids       | Cell count is two; each cell has one homolog from each pair                              |
-| Prophase II       | Two cells prepare for second division                                           | No new DNA replication occurs between meiosis I and meiosis II                          |
-| Metaphase II      | Chromosomes align individually in both cells                                    | Sister chromatid pairs align for separation                                             |
-| Anaphase II       | Sister chromatids separate                                                     | Sister chromatids become separate chromosome bodies                                     |
-| Telophase II      | Four haploid cells are visible                                                  | Four haploid daughter cells exist                                                       |
-| Gametes Complete  | Final four products are arranged for comparison                                 | Each gamete contains one chromosome from each original homologous pair, possibly mixed by crossover |
+| Stage            | Visual Meaning                                                              | Biological Invariant                                                                                |
+| ---------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Interphase       | One parent cell with replicated chromosomes shown as sister chromatid pairs | DNA has replicated; chromosome bodies are duplicated but the cell is still diploid                  |
+| Prophase I       | Homologs pair into tetrads; optional crossover segments appear              | Homologous chromosomes synapse; crossing over can occur between non-sister chromatids               |
+| Metaphase I      | Tetrads align at the cell equator with chosen homolog orientation           | Homolog pairs, not individual sister chromatids, determine first-division segregation               |
+| Anaphase I       | Homologs separate toward opposite poles; sister chromatids stay connected   | Homologous chromosomes separate; sister chromatids remain paired                                    |
+| Telophase I      | Two haploid cells are visible, each chromosome still has sister chromatids  | Cell count is two; each cell has one homolog from each pair                                         |
+| Prophase II      | Two cells prepare for second division                                       | No new DNA replication occurs between meiosis I and meiosis II                                      |
+| Metaphase II     | Chromosomes align individually in both cells                                | Sister chromatid pairs align for separation                                                         |
+| Anaphase II      | Sister chromatids separate                                                  | Sister chromatids become separate chromosome bodies                                                 |
+| Telophase II     | Four haploid cells are visible                                              | Four haploid daughter cells exist                                                                   |
+| Gametes Complete | Final four products are arranged for comparison                             | Each gamete contains one chromosome from each original homologous pair, possibly mixed by crossover |
 
 ## Model Rules
 
@@ -134,13 +134,13 @@ The UI may label homologs as maternal/paternal for clarity, but it should explai
 
 ## Parameter Ranges
 
-| Parameter                | Default      | Options                  |
-| ------------------------ | ------------ | ------------------------ |
-| `crossingOverEnabled`    | `true`       | `true`, `false`          |
-| `metaphaseIOrientation`  | `orientationA` | `orientationA`, `orientationB` |
-| `showLabels`             | `true`       | `true`, `false`          |
-| `showStageNarration`     | `true`       | `true`, `false`          |
-| `playbackMode`           | `manual`     | `manual`, `auto`         |
+| Parameter               | Default        | Options                        |
+| ----------------------- | -------------- | ------------------------------ |
+| `crossingOverEnabled`   | `true`         | `true`, `false`                |
+| `metaphaseIOrientation` | `orientationA` | `orientationA`, `orientationB` |
+| `showLabels`            | `true`         | `true`, `false`                |
+| `showStageNarration`    | `true`         | `true`, `false`                |
+| `playbackMode`          | `manual`       | `manual`, `auto`               |
 
 Prototype B should not expose chromosome pair count as a user parameter. Keeping `2n = 4` fixed makes the stage invariants readable and testable.
 
@@ -159,13 +159,13 @@ The shared playback controls may be reused for play, pause, reset, and step, but
 
 ## Presets
 
-| Preset                  | Purpose                                                       |
-| ----------------------- | ------------------------------------------------------------- |
-| Crossing over on        | Shows recombined chromatids and final variation.              |
-| Crossing over off       | Shows independent assortment without segment exchange.        |
-| Orientation A           | Shows one homolog arrangement at metaphase I.                 |
-| Orientation B           | Shows the alternate homolog arrangement at metaphase I.       |
-| Teacher presentation    | Enables labels and narration with manual stage stepping.      |
+| Preset               | Purpose                                                  |
+| -------------------- | -------------------------------------------------------- |
+| Crossing over on     | Shows recombined chromatids and final variation.         |
+| Crossing over off    | Shows independent assortment without segment exchange.   |
+| Orientation A        | Shows one homolog arrangement at metaphase I.            |
+| Orientation B        | Shows the alternate homolog arrangement at metaphase I.  |
+| Teacher presentation | Enables labels and narration with manual stage stepping. |
 
 ## Telemetry
 
@@ -231,19 +231,19 @@ If a shared graph component is reused, it should represent stage progression, no
 
 Use deterministic model tests for stage transitions and invariants.
 
-| Case                         | Setup                                  | Expected                                                                 |
-| ---------------------------- | -------------------------------------- | ------------------------------------------------------------------------ |
-| Initial state                | default parameters                     | stage is Interphase; one diploid parent cell; replicated chromatids shown |
-| Step forward                 | any non-final stage                    | stage index increments by exactly one                                    |
-| Step backward                | any non-initial stage                  | stage index decrements by exactly one                                    |
-| Clamp previous               | Interphase                             | previous keeps stage at Interphase                                       |
-| Clamp next                   | Gametes Complete                       | next keeps stage at Gametes Complete                                     |
-| Prophase I crossover on      | crossing over enabled                  | exactly two recombined chromatids are marked                             |
-| Prophase I crossover off     | crossing over disabled                 | no recombined chromatids are marked                                      |
-| After meiosis I              | Telophase I                            | two haploid cells, each with two replicated chromosomes                   |
-| After meiosis II             | Gametes Complete                       | four haploid cells, each with two unreplicated chromosomes                |
-| Orientation A vs B           | alternate metaphase I orientation      | final homolog combinations differ deterministically                      |
-| No replication between divisions | Prophase II through Metaphase II   | chromatid count does not double again                                    |
+| Case                             | Setup                             | Expected                                                                  |
+| -------------------------------- | --------------------------------- | ------------------------------------------------------------------------- |
+| Initial state                    | default parameters                | stage is Interphase; one diploid parent cell; replicated chromatids shown |
+| Step forward                     | any non-final stage               | stage index increments by exactly one                                     |
+| Step backward                    | any non-initial stage             | stage index decrements by exactly one                                     |
+| Clamp previous                   | Interphase                        | previous keeps stage at Interphase                                        |
+| Clamp next                       | Gametes Complete                  | next keeps stage at Gametes Complete                                      |
+| Prophase I crossover on          | crossing over enabled             | exactly two recombined chromatids are marked                              |
+| Prophase I crossover off         | crossing over disabled            | no recombined chromatids are marked                                       |
+| After meiosis I                  | Telophase I                       | two haploid cells, each with two replicated chromosomes                   |
+| After meiosis II                 | Gametes Complete                  | four haploid cells, each with two unreplicated chromosomes                |
+| Orientation A vs B               | alternate metaphase I orientation | final homolog combinations differ deterministically                       |
+| No replication between divisions | Prophase II through Metaphase II  | chromatid count does not double again                                     |
 
 ## Accessibility Notes
 
