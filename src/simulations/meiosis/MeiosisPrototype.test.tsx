@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { MeiosisPrototype } from "./MeiosisPrototype";
 
 describe("MeiosisPrototype", () => {
@@ -129,5 +129,22 @@ describe("MeiosisPrototype", () => {
 
     expect(screen.getByRole("button", { name: "Present" })).toBeInTheDocument();
     expect(screen.getByLabelText("Metaphase I orientation")).toBeInTheDocument();
+  });
+
+  it("does not register timers or animation loops across presentation mount cycles", () => {
+    const setIntervalSpy = vi.spyOn(window, "setInterval");
+    const requestAnimationFrameSpy = vi.spyOn(window, "requestAnimationFrame");
+    const { unmount } = render(<MeiosisPrototype />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Present" }));
+    fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    fireEvent.click(screen.getByRole("button", { name: "Exit presentation" }));
+    unmount();
+
+    expect(setIntervalSpy).not.toHaveBeenCalled();
+    expect(requestAnimationFrameSpy).not.toHaveBeenCalled();
+
+    setIntervalSpy.mockRestore();
+    requestAnimationFrameSpy.mockRestore();
   });
 });
