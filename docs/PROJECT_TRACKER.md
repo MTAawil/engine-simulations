@@ -29,14 +29,14 @@ Update rule:
 
 ## Epic Summary
 
-| Epic    | Name                                    | Status   | Review   | Notes                                                                                                                  |
-| ------- | --------------------------------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
-| EPIC-00 | Repository Foundation                   | REVIEWED | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`.                 |
-| EPIC-01 | Simulation Studio Core V1               | REVIEWED | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                                 |
-| EPIC-02 | Electromagnetic Induction Specification | REVIEWED | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.                        |
-| EPIC-03 | Electromagnetic Induction Prototype     | BLOCKED  | PENDING  | Implementation, scientific review, and visual/UX review complete; Release QA reviewer blocked by subagent usage limit. |
-| EPIC-04 | Prototype A Release Candidate           | DONE     | PENDING  | Owner testing guide, screenshots, QA gate, current status, and approval recommendation prepared.                       |
-| EPIC-05 | Meiosis Prototype                       | TODO     | PENDING  | Parked until Prototype A is approved unless owner redirects.                                                           |
+| Epic    | Name                                    | Status   | Review   | Notes                                                                                                               |
+| ------- | --------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
+| EPIC-00 | Repository Foundation                   | REVIEWED | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`.              |
+| EPIC-01 | Simulation Studio Core V1               | REVIEWED | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                              |
+| EPIC-02 | Electromagnetic Induction Specification | REVIEWED | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.                     |
+| EPIC-03 | Electromagnetic Induction Prototype     | REVIEWED | REVIEWED | Prototype complete and reviewed by Scientific, Visual/UX, and Release QA reviewers.                                 |
+| EPIC-04 | Prototype A Release Candidate           | REVIEWED | REVIEWED | Release-candidate package reviewed; owner testing guide, screenshots, QA gate, status, and recommendation prepared. |
+| EPIC-05 | Meiosis Prototype                       | TODO     | PENDING  | Parked until Prototype A is approved unless owner redirects.                                                        |
 
 ## EPIC-00: Repository Foundation
 
@@ -92,17 +92,17 @@ Update rule:
 | SS-307 | Verify resource cleanup                       | REVIEWED | REVIEWED | Cleanup test verifies renderer destroy and resize observer disconnect; covered by release readiness checks.                                                        |
 | SS-308 | Run Scientific Reviewer                       | REVIEWED | REVIEWED | Review saved in `docs/reviews/electromagnetic-induction-prototype-scientific-review.md`; LOW reset-time finding fixed, unbounded-angle note accepted as follow-up. |
 | SS-309 | Run Visual / UX Reviewer                      | REVIEWED | REVIEWED | Review saved in `docs/reviews/electromagnetic-induction-prototype-visual-ux-review.md`; two MEDIUM findings resolved.                                              |
-| SS-310 | Run Release QA Reviewer                       | BLOCKED  | PENDING  | Release QA Reviewer Agent hit account usage limit before review; rerun when available before marking Prototype A reviewed.                                         |
+| SS-310 | Run Release QA Reviewer                       | REVIEWED | REVIEWED | Review saved in `docs/reviews/electromagnetic-induction-prototype-release-qa-review.md`; label crowding fixed, placeholder e2e/visual accepted as follow-up.       |
 
 ## EPIC-04: Prototype A Release Candidate
 
-| Task   | Title                                    | Status | Review       | Notes                                                                                                    |
-| ------ | ---------------------------------------- | ------ | ------------ | -------------------------------------------------------------------------------------------------------- |
-| SS-401 | Run full QA gate                         | DONE   | PENDING      | `pnpm qa:full` passed; browser checks confirmed labels, graph, telemetry, and 1280x720 presentation fit. |
-| SS-402 | Create owner testing guide               | DONE   | PENDING      | Guide saved in `docs/user-testing/prototype-a-electromagnetic-induction.md`.                             |
-| SS-403 | Capture current screenshots if supported | DONE   | PENDING      | Baseline screenshots saved in `docs/screenshots/prototype-a/`.                                           |
-| SS-404 | Update current status and known issues   | DONE   | PENDING      | `docs/CURRENT_STATUS.md` updated for Prototype A release-candidate state.                                |
-| SS-405 | Recommend next step for owner approval   | DONE   | NOT_REQUIRED | Next step is owner testing/approval; Meiosis remains parked.                                             |
+| Task   | Title                                    | Status   | Review       | Notes                                                                                               |
+| ------ | ---------------------------------------- | -------- | ------------ | --------------------------------------------------------------------------------------------------- |
+| SS-401 | Run full QA gate                         | REVIEWED | REVIEWED     | `pnpm qa:full` passed after Release QA fixes; placeholder e2e/visual scripts accepted as follow-up. |
+| SS-402 | Create owner testing guide               | REVIEWED | REVIEWED     | Guide saved in `docs/user-testing/prototype-a-electromagnetic-induction.md`.                        |
+| SS-403 | Capture current screenshots if supported | REVIEWED | REVIEWED     | Baseline screenshots refreshed in `docs/screenshots/prototype-a/`.                                  |
+| SS-404 | Update current status and known issues   | REVIEWED | REVIEWED     | `docs/CURRENT_STATUS.md` updated for Prototype A release-candidate reviewed state.                  |
+| SS-405 | Recommend next step for owner approval   | DONE     | NOT_REQUIRED | Next step is owner testing/approval; Meiosis remains parked.                                        |
 
 ## EPIC-05: Meiosis Prototype
 
