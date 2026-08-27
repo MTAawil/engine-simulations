@@ -31,14 +31,15 @@ Update rule:
 
 ## Epic Summary
 
-| Epic    | Name                                    | Status   | Review   | Notes                                                                                                               |
-| ------- | --------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| EPIC-00 | Repository Foundation                   | REVIEWED | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`.              |
-| EPIC-01 | Simulation Studio Core V1               | REVIEWED | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                              |
-| EPIC-02 | Electromagnetic Induction Specification | REVIEWED | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.                     |
-| EPIC-03 | Electromagnetic Induction Prototype     | REVIEWED | REVIEWED | Prototype complete and reviewed by Scientific, Visual/UX, and Release QA reviewers.                                 |
-| EPIC-04 | Prototype A Release Candidate           | REVIEWED | REVIEWED | Release-candidate package reviewed; owner testing guide, screenshots, QA gate, status, and recommendation prepared. |
-| EPIC-05 | Meiosis Prototype                       | REVIEWED | REVIEWED | Laptop/desktop Meiosis prototype is ready for owner testing; milestone reviews saved under `docs/reviews/`.         |
+| Epic    | Name                                    | Status      | Review       | Notes                                                                                                               |
+| ------- | --------------------------------------- | ----------- | ------------ | ------------------------------------------------------------------------------------------------------------------- |
+| EPIC-00 | Repository Foundation                   | REVIEWED    | REVIEWED     | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`.              |
+| EPIC-01 | Simulation Studio Core V1               | REVIEWED    | REVIEWED     | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                              |
+| EPIC-02 | Electromagnetic Induction Specification | REVIEWED    | REVIEWED     | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.                     |
+| EPIC-03 | Electromagnetic Induction Prototype     | REVIEWED    | REVIEWED     | Prototype complete and reviewed by Scientific, Visual/UX, and Release QA reviewers.                                 |
+| EPIC-04 | Prototype A Release Candidate           | REVIEWED    | REVIEWED     | Release-candidate package reviewed; owner testing guide, screenshots, QA gate, status, and recommendation prepared. |
+| EPIC-05 | Meiosis Prototype                       | REVIEWED    | REVIEWED     | Laptop/desktop Meiosis prototype is ready for owner testing; milestone reviews saved under `docs/reviews/`.         |
+| EPIC-06 | Owner Testing And Next Prototype        | IN_PROGRESS | NOT_REQUIRED | Owner testing is the active step; next prototype selection waits on feedback or explicit owner direction.           |
 
 ## EPIC-00: Repository Foundation
 
@@ -120,3 +121,12 @@ Update rule:
 | SS-508 | Implement Meiosis presentation mode       | REVIEWED | REVIEWED     | Laptop-first presentation layout implemented with shared `PresentationShell`; covered by milestone Visual/UX and Release QA reviews.   |
 | SS-509 | Verify Meiosis resource cleanup           | DONE     | NOT_REQUIRED | React/CSS-only renderer verified with no timers, animation loops, or external renderer resources across presentation mount cycles.     |
 | SS-510 | Run Meiosis prototype milestone reviewers | REVIEWED | REVIEWED     | Scientific confirmation, Visual/UX, and Release QA reviews completed; owner testing guide created.                                     |
+
+## EPIC-06: Owner Testing And Next Prototype
+
+| Task   | Title                                | Status      | Review       | Notes                                                                                           |
+| ------ | ------------------------------------ | ----------- | ------------ | ----------------------------------------------------------------------------------------------- |
+| SS-601 | Run Meiosis owner testing            | IN_PROGRESS | NOT_REQUIRED | Owner should test normal and presentation flows using `docs/user-testing/meiosis-prototype.md`. |
+| SS-602 | Triage Meiosis owner feedback        | TODO        | NOT_REQUIRED | Convert owner feedback into fix tasks or accepted follow-ups.                                   |
+| SS-603 | Decide Meiosis approval or iteration | TODO        | NOT_REQUIRED | Mark approved for current laptop/desktop scope or open a focused iteration.                     |
+| SS-604 | Choose next simulation target        | TODO        | NOT_REQUIRED | Select the next prototype after Meiosis feedback or explicit owner direction.                   |

@@ -71,4 +71,4 @@ Meiosis Prototype is ready for owner testing on desktop/laptop after milestone r
 
 ## Next Milestone
 
-Owner testing for the Meiosis laptop/desktop prototype.
+Owner testing for the Meiosis laptop/desktop prototype, followed by feedback triage and next prototype selection.

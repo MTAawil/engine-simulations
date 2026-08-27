@@ -14,6 +14,12 @@ Create the specification first, then implement the scientific model, determinist
 
 Stop after Prototype A reaches release-candidate state and prepare owner testing materials.
 
-## Future
+## Phase 3: Meiosis Prototype
 
-Prototype B: Meiosis, after Prototype A owner approval unless explicitly redirected.
+Create the specification first, then implement the deterministic stage model, scientific tests, chromosome/cell renderer, controls, telemetry, presentation mode, cleanup verification, and desktop/laptop readiness materials.
+
+Meiosis is ready for owner testing on desktop/laptop.
+
+## Phase 4: Owner Testing And Next Prototype Selection
+
+Collect owner feedback for Meiosis, triage issues, decide whether the prototype is approved or needs an iteration, and choose the next simulation target.
