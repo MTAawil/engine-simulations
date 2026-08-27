@@ -1,10 +1,10 @@
 # Current Status
 
-Date: 2026-08-26
+Date: 2026-08-27
 
 ## Phase
 
-Meiosis Prototype specification started after owner redirected work beyond Prototype A.
+Meiosis Prototype is ready for owner testing on desktop/laptop after milestone reviews.
 
 ## Completed
 
@@ -50,16 +50,25 @@ Meiosis Prototype specification started after owner redirected work beyond Proto
 - Meiosis Architecture Reviewer completed for the current scope; one LOW future-risk note was accepted in `docs/reviews/meiosis-architecture-review.md`.
 - Meiosis laptop-first presentation mode added using the shared `PresentationShell`.
 - Meiosis cleanup verification passed: the React/CSS-only prototype does not register timers, animation loops, or external renderer resources across presentation mount cycles.
+- Meiosis milestone Scientific confirmation, Visual / UX review, and Release QA review completed on 2026-08-27.
+- Meiosis owner testing guide created at `docs/user-testing/meiosis-prototype.md`.
+- `pnpm qa:full` passed for the Meiosis milestone:
+  - lint
+  - typecheck
+  - 19 Vitest files, 109 tests
+  - production build
+  - documented placeholder e2e/visual scripts
 
 ## Known Issues
 
 - `qa:full` still contains transparent placeholder scripts for automated Playwright and visual regression tests; browser-assisted checks were run manually for Prototype A.
 - Production build warns that the main JavaScript chunk is larger than 500 kB because Three.js is bundled into the current prototype.
 - Mobile layout is intentionally postponed by owner request.
+- Meiosis milestone Visual / UX review did not include live browser inspection because localhost access was blocked for the reviewer; owner testing should cover normal and presentation flows.
 - Reduced-motion handling is not implemented yet; playback motion is user-initiated.
 - `pnpm-workspace.yaml` exists only for pnpm supply-chain policy state; this is not a monorepo.
 - RTK is optional and should be used only when it reduces noisy routine command output without hiding important diagnostics.
 
 ## Next Milestone
 
-Run Meiosis milestone reviewers sequentially.
+Owner testing for the Meiosis laptop/desktop prototype.

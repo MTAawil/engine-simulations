@@ -31,14 +31,14 @@ Update rule:
 
 ## Epic Summary
 
-| Epic    | Name                                    | Status      | Review   | Notes                                                                                                               |
-| ------- | --------------------------------------- | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
-| EPIC-00 | Repository Foundation                   | REVIEWED    | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`.              |
-| EPIC-01 | Simulation Studio Core V1               | REVIEWED    | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                              |
-| EPIC-02 | Electromagnetic Induction Specification | REVIEWED    | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.                     |
-| EPIC-03 | Electromagnetic Induction Prototype     | REVIEWED    | REVIEWED | Prototype complete and reviewed by Scientific, Visual/UX, and Release QA reviewers.                                 |
-| EPIC-04 | Prototype A Release Candidate           | REVIEWED    | REVIEWED | Release-candidate package reviewed; owner testing guide, screenshots, QA gate, status, and recommendation prepared. |
-| EPIC-05 | Meiosis Prototype                       | IN_PROGRESS | PENDING  | Meiosis implementation tasks are complete; milestone reviewers remain before release-candidate readiness.           |
+| Epic    | Name                                    | Status   | Review   | Notes                                                                                                               |
+| ------- | --------------------------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------- |
+| EPIC-00 | Repository Foundation                   | REVIEWED | REVIEWED | Phase 0 baseline complete. Architecture review saved in `docs/reviews/phase-0-architecture-review.md`.              |
+| EPIC-01 | Simulation Studio Core V1               | REVIEWED | REVIEWED | Core V1 complete. Implementation and architecture reviews saved under `docs/reviews/`.                              |
+| EPIC-02 | Electromagnetic Induction Specification | REVIEWED | REVIEWED | Specification complete and reviewed in `docs/reviews/electromagnetic-induction-spec-review.md`.                     |
+| EPIC-03 | Electromagnetic Induction Prototype     | REVIEWED | REVIEWED | Prototype complete and reviewed by Scientific, Visual/UX, and Release QA reviewers.                                 |
+| EPIC-04 | Prototype A Release Candidate           | REVIEWED | REVIEWED | Release-candidate package reviewed; owner testing guide, screenshots, QA gate, status, and recommendation prepared. |
+| EPIC-05 | Meiosis Prototype                       | REVIEWED | REVIEWED | Laptop/desktop Meiosis prototype is ready for owner testing; milestone reviews saved under `docs/reviews/`.         |
 
 ## EPIC-00: Repository Foundation
 
@@ -117,6 +117,6 @@ Update rule:
 | SS-505 | Add Meiosis scientific tests              | REVIEWED | REVIEWED     | Scientific and Implementation reviews completed after targeted regression tests passed.                                                |
 | SS-506 | Implement Meiosis visual stage renderer   | REVIEWED | REVIEWED     | Scientific, Implementation, Visual/UX, and Architecture reviews completed after renderer, orientation, and layout fixes.               |
 | SS-507 | Implement Meiosis controls and telemetry  | REVIEWED | REVIEWED     | Scientific, Implementation, Visual/UX, and Architecture reviews completed after orientation lock, narration, and timeline label fixes. |
-| SS-508 | Implement Meiosis presentation mode       | DONE     | PENDING      | Laptop-first presentation layout implemented with shared `PresentationShell`; review will run at milestone gate unless risk rises.     |
+| SS-508 | Implement Meiosis presentation mode       | REVIEWED | REVIEWED     | Laptop-first presentation layout implemented with shared `PresentationShell`; covered by milestone Visual/UX and Release QA reviews.   |
 | SS-509 | Verify Meiosis resource cleanup           | DONE     | NOT_REQUIRED | React/CSS-only renderer verified with no timers, animation loops, or external renderer resources across presentation mount cycles.     |
-| SS-510 | Run Meiosis prototype milestone reviewers | TODO     | PENDING      | Scientific, Visual / UX, and Release QA reviewers at milestone end or earlier if risk rises.                                           |
+| SS-510 | Run Meiosis prototype milestone reviewers | REVIEWED | REVIEWED     | Scientific confirmation, Visual/UX, and Release QA reviews completed; owner testing guide created.                                     |
